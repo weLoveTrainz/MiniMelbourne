@@ -1,9 +1,9 @@
-import React, { useRef, useEffect, useState } from "react";
-import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
-import "./map.css";
+import React, { useRef, useEffect, useState } from 'react';
+import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
+import './map.css';
 
 mapboxgl.accessToken =
-  "pk.eyJ1IjoiYW5naWVneWkiLCJhIjoiY2t6eHo3bnZ3MDZkNTJvbnRhb3pucHNzMCJ9.M0LQFtd2bK54Z1UTDtzhAw";
+  'pk.eyJ1IjoiYW5naWVneWkiLCJhIjoiY2t6eHo3bnZ3MDZkNTJvbnRhb3pucHNzMCJ9.M0LQFtd2bK54Z1UTDtzhAw';
 
 export default function Map() {
   const mapContainer = useRef(null);
