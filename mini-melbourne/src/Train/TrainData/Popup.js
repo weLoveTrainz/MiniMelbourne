@@ -41,9 +41,9 @@ const useStyles = makeStyles({
     order: "0",
     flexGrow: "0",
   },
-  subtitle: { 
-    fontWeight: '550',
-  }
+  subtitle: {
+    fontWeight: "550",
+  },
 });
 
 const Popup = (props) => {
@@ -52,7 +52,12 @@ const Popup = (props) => {
     <Card
       className={classes.root}
       raised={true}
-      sx={{ borderRadius: "15px", display: "flex", alignItems: "center", justifyContent: "center" }}
+      sx={{
+        borderRadius: "15px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
     >
       <CardMedia
         component="img"
@@ -60,8 +65,8 @@ const Popup = (props) => {
         image={trainIcon}
         alt="Live from space album cover"
       />
-      <Box sx={{ display: "flex", flexDirection: "column"}}>
-        <CardContent sx={{ flex: '1 0 auto' }}>
+      <Box sx={{ display: "flex", flexDirection: "column" }}>
+        <CardContent sx={{ flex: "1 0 auto" }}>
           <Typography
             variant="h5"
             component="div"
@@ -70,14 +75,28 @@ const Popup = (props) => {
           >
             {props.trainLine}
           </Typography>
-          <Typography variant="body2" color="text.secondary" sx={{lineHeight: 1.5}}>
-            <span className={classes.subtitle}>Next Station:</span> {props.nextStation}
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{ lineHeight: 1.5 }}
+          >
+            <span className={classes.subtitle}>Next Station:</span>{" "}
+            {props.nextStation}
           </Typography>
-          <Typography variant="body2" color="text.secondary" sx={{lineHeight: 1.5}}>
-          <span className={classes.subtitle}>ETA:</span> {props.etaTime}
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{ lineHeight: 1.5 }}
+          >
+            <span className={classes.subtitle}>ETA:</span> {props.etaTime}
           </Typography>
-          <Typography variant="body2" color="text.secondary" sx={{lineHeight: 1.5}}>
-          <span className={classes.subtitle}>Train Occupancy:</span> {props.occupancy}
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{ lineHeight: 1.5 }}
+          >
+            <span className={classes.subtitle}>Train Occupancy:</span>{" "}
+            {props.occupancy}
           </Typography>
         </CardContent>
       </Box>
