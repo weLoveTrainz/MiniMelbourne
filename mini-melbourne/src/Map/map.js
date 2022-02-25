@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
+import Popup from '../Train/TrainData/Popup';
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 import './map.css';
 import stations from './data/stations.json';
@@ -96,9 +97,10 @@ export default function Map() {
   return (
     <div>
       <div className="sidebar">
-        Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
+        Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}  
       </div>
-      <div ref={mapContainerRef} className="map-container" />
+      <div ref={mapContainer} className="map-container" />
+      <Popup nextStation="Flinders Street" etaTime="7:30pm" occupancy="Light"/>
     </div>
   );
 }
