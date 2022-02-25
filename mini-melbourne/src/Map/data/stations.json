@@ -1,0 +1,1334 @@
+[
+  {
+    "stop_id": 15351,
+    "stop_name": "Sunbury Railway Station (Sunbury)",
+    "stop_lat": "-37.5790909705787",
+    "stop_lon": "144.727318781329"
+  },
+  {
+    "stop_id": 15353,
+    "stop_name": "Diggers Rest Railway Station (Diggers Rest)",
+    "stop_lat": "-37.6270165149357",
+    "stop_lon": "144.719922441113"
+  },
+  {
+    "stop_id": 19827,
+    "stop_name": "Stony Point Railway Station (Crib Point)",
+    "stop_lat": "-38.3742345364937",
+    "stop_lon": "145.221837462187"
+  },
+  {
+    "stop_id": 19828,
+    "stop_name": "Crib Point Railway Station (Crib Point)",
+    "stop_lat": "-38.3661233827862",
+    "stop_lon": "145.204043321601"
+  },
+  {
+    "stop_id": 19829,
+    "stop_name": "Morradoo Railway Station (Crib Point)",
+    "stop_lat": "-38.3540333365844",
+    "stop_lon": "145.189602487712"
+  },
+  {
+    "stop_id": 19830,
+    "stop_name": "Bittern Railway Station (Bittern)",
+    "stop_lat": "-38.3373903202406",
+    "stop_lon": "145.178026527511"
+  },
+  {
+    "stop_id": 19831,
+    "stop_name": "Hastings Railway Station (Hastings)",
+    "stop_lat": "-38.3056585273722",
+    "stop_lon": "145.185979882012"
+  },
+  {
+    "stop_id": 19832,
+    "stop_name": "Tyabb Railway Station (Tyabb)",
+    "stop_lat": "-38.2598150046916",
+    "stop_lon": "145.186400708984"
+  },
+  {
+    "stop_id": 19833,
+    "stop_name": "Somerville Railway Station (Somerville)",
+    "stop_lat": "-38.2253419593114",
+    "stop_lon": "145.1762449189"
+  },
+  {
+    "stop_id": 19834,
+    "stop_name": "Baxter Railway Station (Baxter)",
+    "stop_lat": "-38.1940430573051",
+    "stop_lon": "145.160526087615"
+  },
+  {
+    "stop_id": 19835,
+    "stop_name": "Glen Iris Railway Station (Glen Iris)",
+    "stop_lat": "-37.8593084165858",
+    "stop_lon": "145.058224898221"
+  },
+  {
+    "stop_id": 19836,
+    "stop_name": "Leawarra Railway Station (Frankston)",
+    "stop_lat": "-38.1520339975222",
+    "stop_lon": "145.139533963382"
+  },
+  {
+    "stop_id": 19837,
+    "stop_name": "Darling Railway Station (Malvern East)",
+    "stop_lat": "-37.8689568446092",
+    "stop_lon": "145.062950826245"
+  },
+  {
+    "stop_id": 19838,
+    "stop_name": "East Malvern Railway Station (Malvern East)",
+    "stop_lat": "-37.8769300156728",
+    "stop_lon": "145.0693930023"
+  },
+  {
+    "stop_id": 19839,
+    "stop_name": "Holmesglen Railway Station (Malvern East)",
+    "stop_lat": "-37.8744022200498",
+    "stop_lon": "145.090662027436"
+  },
+  {
+    "stop_id": 19840,
+    "stop_name": "Jordanville Railway Station (Mount Waverley)",
+    "stop_lat": "-37.8736033933188",
+    "stop_lon": "145.112090156436"
+  },
+  {
+    "stop_id": 19841,
+    "stop_name": "Flagstaff Railway Station (Melbourne City)",
+    "stop_lat": "-37.8119813073807",
+    "stop_lon": "144.955653760429"
+  },
+  {
+    "stop_id": 19842,
+    "stop_name": "Melbourne Central Railway Station (Melbourne City)",
+    "stop_lat": "-37.8099387667386",
+    "stop_lon": "144.962593535096"
+  },
+  {
+    "stop_id": 19843,
+    "stop_name": "Parliament Railway Station (Melbourne City)",
+    "stop_lat": "-37.8110540555305",
+    "stop_lon": "144.972910916416"
+  },
+  {
+    "stop_id": 19844,
+    "stop_name": "Belgrave Railway Station (Belgrave)",
+    "stop_lat": "-37.9091020974712",
+    "stop_lon": "145.355291282858"
+  },
+  {
+    "stop_id": 19845,
+    "stop_name": "Tecoma Railway Station (Tecoma)",
+    "stop_lat": "-37.9081184864021",
+    "stop_lon": "145.342994577662"
+  },
+  {
+    "stop_id": 19846,
+    "stop_name": "Upwey Railway Station (Upwey)",
+    "stop_lat": "-37.9036909717454",
+    "stop_lon": "145.331333355214"
+  },
+  {
+    "stop_id": 19847,
+    "stop_name": "Alamein Railway Station (Ashburton)",
+    "stop_lat": "-37.8683203919866",
+    "stop_lon": "145.079655668512"
+  },
+  {
+    "stop_id": 19848,
+    "stop_name": "Ashburton Railway Station (Ashburton)",
+    "stop_lat": "-37.8619675331692",
+    "stop_lon": "145.081343759057"
+  },
+  {
+    "stop_id": 19849,
+    "stop_name": "Burwood Railway Station (Glen Iris)",
+    "stop_lat": "-37.8515632823172",
+    "stop_lon": "145.080511068965"
+  },
+  {
+    "stop_id": 19850,
+    "stop_name": "Hartwell Railway Station (Camberwell)",
+    "stop_lat": "-37.8439845657174",
+    "stop_lon": "145.075559591232"
+  },
+  {
+    "stop_id": 19851,
+    "stop_name": "Willison Railway Station (Camberwell)",
+    "stop_lat": "-37.8357156505359",
+    "stop_lon": "145.070297555357"
+  },
+  {
+    "stop_id": 19852,
+    "stop_name": "Riversdale Railway Station (Camberwell)",
+    "stop_lat": "-37.8315054341723",
+    "stop_lon": "145.069645982205"
+  },
+  {
+    "stop_id": 19853,
+    "stop_name": "Camberwell Railway Station (Camberwell)",
+    "stop_lat": "-37.8265671441669",
+    "stop_lon": "145.058697177155"
+  },
+  {
+    "stop_id": 19854,
+    "stop_name": "Flinders Street Railway Station (Melbourne City)",
+    "stop_lat": "-37.8183051340585",
+    "stop_lon": "144.966964346166"
+  },
+  {
+    "stop_id": 19855,
+    "stop_name": "Frankston Railway Station (Frankston)",
+    "stop_lat": "-38.1429900671654",
+    "stop_lon": "145.126162282251"
+  },
+  {
+    "stop_id": 19856,
+    "stop_name": "Kananook Railway Station (Seaford)",
+    "stop_lat": "-38.121742033539",
+    "stop_lon": "145.13529534058"
+  },
+  {
+    "stop_id": 19857,
+    "stop_name": "Seaford Railway Station (Seaford)",
+    "stop_lat": "-38.104021039668",
+    "stop_lon": "145.128230402217"
+  },
+  {
+    "stop_id": 19858,
+    "stop_name": "Carrum Railway Station (Carrum)",
+    "stop_lat": "-38.0765036140059",
+    "stop_lon": "145.122833083083"
+  },
+  {
+    "stop_id": 19859,
+    "stop_name": "Bonbeach Railway Station (Bonbeach)",
+    "stop_lat": "-38.0650770377135",
+    "stop_lon": "145.120024795424"
+  },
+  {
+    "stop_id": 19860,
+    "stop_name": "Chelsea Railway Station (Chelsea)",
+    "stop_lat": "-38.0533256255246",
+    "stop_lon": "145.11663300748"
+  },
+  {
+    "stop_id": 19861,
+    "stop_name": "Edithvale Railway Station (Edithvale)",
+    "stop_lat": "-38.0360625622791",
+    "stop_lon": "145.107299317273"
+  },
+  {
+    "stop_id": 19862,
+    "stop_name": "Aspendale Railway Station (Aspendale)",
+    "stop_lat": "-38.0272201944523",
+    "stop_lon": "145.102149616841"
+  },
+  {
+    "stop_id": 19863,
+    "stop_name": "Mordialloc Railway Station (Mordialloc)",
+    "stop_lat": "-38.0065829507618",
+    "stop_lon": "145.08765935746"
+  },
+  {
+    "stop_id": 19864,
+    "stop_name": "Parkdale Railway Station (Parkdale)",
+    "stop_lat": "-37.9930788207759",
+    "stop_lon": "145.076326823728"
+  },
+  {
+    "stop_id": 19865,
+    "stop_name": "Mentone Railway Station (Mentone)",
+    "stop_lat": "-37.9818654019494",
+    "stop_lon": "145.065165898742"
+  },
+  {
+    "stop_id": 19866,
+    "stop_name": "Cheltenham Railway Station (Cheltenham)",
+    "stop_lat": "-37.9666498944342",
+    "stop_lon": "145.054557933026"
+  },
+  {
+    "stop_id": 19867,
+    "stop_name": "Upper Ferntree Gully Railway Station (Upper Ferntree Gully)",
+    "stop_lat": "-37.8926717009388",
+    "stop_lon": "145.307530188155"
+  },
+  {
+    "stop_id": 19868,
+    "stop_name": "Ferntree Gully Railway Station (Ferntree Gully)",
+    "stop_lat": "-37.8816979923577",
+    "stop_lon": "145.295251256598"
+  },
+  {
+    "stop_id": 19869,
+    "stop_name": "Boronia Railway Station (Boronia)",
+    "stop_lat": "-37.8604517998444",
+    "stop_lon": "145.28438514597"
+  },
+  {
+    "stop_id": 19870,
+    "stop_name": "Bayswater Railway Station (Bayswater)",
+    "stop_lat": "-37.8417300410993",
+    "stop_lon": "145.268136389217"
+  },
+  {
+    "stop_id": 19871,
+    "stop_name": "Heathmont Railway Station (Heathmont)",
+    "stop_lat": "-37.8283222725383",
+    "stop_lon": "145.244555375848"
+  },
+  {
+    "stop_id": 19872,
+    "stop_name": "Highett Railway Station (Highett)",
+    "stop_lat": "-37.9484250041841",
+    "stop_lon": "145.041871797791"
+  },
+  {
+    "stop_id": 19873,
+    "stop_name": "Glen Waverley Railway Station (Glen Waverley)",
+    "stop_lat": "-37.8795040720089",
+    "stop_lon": "145.162057549621"
+  },
+  {
+    "stop_id": 19874,
+    "stop_name": "Syndal Railway Station (Glen Waverley)",
+    "stop_lat": "-37.8762296254895",
+    "stop_lon": "145.149780487778"
+  },
+  {
+    "stop_id": 19875,
+    "stop_name": "Mount Waverley Railway Station (Mount Waverley)",
+    "stop_lat": "-37.8752552557019",
+    "stop_lon": "145.128055695744"
+  },
+  {
+    "stop_id": 19876,
+    "stop_name": "Lilydale Railway Station (Lilydale)",
+    "stop_lat": "-37.7555177718931",
+    "stop_lon": "145.347710240852"
+  },
+  {
+    "stop_id": 19877,
+    "stop_name": "Mooroolbark Railway Station (Mooroolbark)",
+    "stop_lat": "-37.7847488250808",
+    "stop_lon": "145.312402399118"
+  },
+  {
+    "stop_id": 19878,
+    "stop_name": "Croydon Railway Station (Croydon)",
+    "stop_lat": "-37.7954369700624",
+    "stop_lon": "145.280597770769"
+  },
+  {
+    "stop_id": 19879,
+    "stop_name": "Ringwood East Railway Station (Ringwood East)",
+    "stop_lat": "-37.811968042776",
+    "stop_lon": "145.250190905264"
+  },
+  {
+    "stop_id": 19880,
+    "stop_name": "Pakenham Railway Station (Pakenham)",
+    "stop_lat": "-38.0806139738066",
+    "stop_lon": "145.486379074704"
+  },
+  {
+    "stop_id": 19881,
+    "stop_name": "Officer Railway Station (Officer)",
+    "stop_lat": "-38.0661457168648",
+    "stop_lon": "145.41098723091"
+  },
+  {
+    "stop_id": 19882,
+    "stop_name": "Beaconsfield Railway Station (Beaconsfield)",
+    "stop_lat": "-38.0508313517826",
+    "stop_lon": "145.366073739227"
+  },
+  {
+    "stop_id": 19883,
+    "stop_name": "Berwick Railway Station (Berwick)",
+    "stop_lat": "-38.0404082904993",
+    "stop_lon": "145.345726085505"
+  },
+  {
+    "stop_id": 19884,
+    "stop_name": "Narre Warren Railway Station (Narre Warren)",
+    "stop_lat": "-38.0278093151679",
+    "stop_lon": "145.303969385674"
+  },
+  {
+    "stop_id": 19885,
+    "stop_name": "Hallam Railway Station (Hallam)",
+    "stop_lat": "-38.0177403817805",
+    "stop_lon": "145.269776796453"
+  },
+  {
+    "stop_id": 19886,
+    "stop_name": "Cranbourne Railway Station (Cranbourne)",
+    "stop_lat": "-38.0995373065849",
+    "stop_lon": "145.280598975647"
+  },
+  {
+    "stop_id": 19887,
+    "stop_name": "Merinda Park Railway Station (Cranbourne North)",
+    "stop_lat": "-38.0790004761497",
+    "stop_lon": "145.263511372935"
+  },
+  {
+    "stop_id": 19888,
+    "stop_name": "Dandenong Railway Station (Dandenong)",
+    "stop_lat": "-37.9899679153812",
+    "stop_lon": "145.209725368166"
+  },
+  {
+    "stop_id": 19889,
+    "stop_name": "Yarraman Railway Station (Noble Park)",
+    "stop_lat": "-37.9782545359253",
+    "stop_lon": "145.191600276299"
+  },
+  {
+    "stop_id": 19890,
+    "stop_name": "Noble Park Railway Station (Noble Park)",
+    "stop_lat": "-37.9666276767387",
+    "stop_lon": "145.176324599832"
+  },
+  {
+    "stop_id": 19891,
+    "stop_name": "Sandown Park Railway Station (Springvale)",
+    "stop_lat": "-37.9565045698556",
+    "stop_lon": "145.162825890396"
+  },
+  {
+    "stop_id": 19892,
+    "stop_name": "East Camberwell Railway Station (Camberwell)",
+    "stop_lat": "-37.8258941905331",
+    "stop_lon": "145.06819024741"
+  },
+  {
+    "stop_id": 19893,
+    "stop_name": "Canterbury Railway Station (Canterbury)",
+    "stop_lat": "-37.8244851789179",
+    "stop_lon": "145.081224242904"
+  },
+  {
+    "stop_id": 19894,
+    "stop_name": "Chatham Railway Station (Surrey Hills)",
+    "stop_lat": "-37.8242995185069",
+    "stop_lon": "145.088647930425"
+  },
+  {
+    "stop_id": 19895,
+    "stop_name": "Surrey Hills Railway Station (Surrey Hills)",
+    "stop_lat": "-37.8241480549092",
+    "stop_lon": "145.098774680388"
+  },
+  {
+    "stop_id": 19896,
+    "stop_name": "Mont Albert Railway Station (Mont Albert)",
+    "stop_lat": "-37.8194265458808",
+    "stop_lon": "145.105530369113"
+  },
+  {
+    "stop_id": 19897,
+    "stop_name": "Laburnum Railway Station (Blackburn)",
+    "stop_lat": "-37.8207802338117",
+    "stop_lon": "145.140702708531"
+  },
+  {
+    "stop_id": 19898,
+    "stop_name": "Blackburn Railway Station (Blackburn)",
+    "stop_lat": "-37.8200707463673",
+    "stop_lon": "145.150013542281"
+  },
+  {
+    "stop_id": 19899,
+    "stop_name": "Nunawading Railway Station (Nunawading)",
+    "stop_lat": "-37.8204282805569",
+    "stop_lon": "145.175236853013"
+  },
+  {
+    "stop_id": 19900,
+    "stop_name": "Mitcham Railway Station (Mitcham)",
+    "stop_lat": "-37.8180870551936",
+    "stop_lon": "145.192891813036"
+  },
+  {
+    "stop_id": 19901,
+    "stop_name": "Heatherdale Railway Station (Ringwood)",
+    "stop_lat": "-37.8188348484368",
+    "stop_lon": "145.213549822481"
+  },
+  {
+    "stop_id": 19902,
+    "stop_name": "Ringwood Railway Station (Ringwood)",
+    "stop_lat": "-37.8156597652712",
+    "stop_lon": "145.229473723591"
+  },
+  {
+    "stop_id": 19903,
+    "stop_name": "Auburn Railway Station (Hawthorn East)",
+    "stop_lat": "-37.8223983064618",
+    "stop_lon": "145.04584365713"
+  },
+  {
+    "stop_id": 19904,
+    "stop_name": "Glenferrie Railway Station (Hawthorn)",
+    "stop_lat": "-37.8214668222115",
+    "stop_lon": "145.036438832309"
+  },
+  {
+    "stop_id": 19905,
+    "stop_name": "Hawthorn Railway Station (Hawthorn)",
+    "stop_lat": "-37.8218260089713",
+    "stop_lon": "145.022898658759"
+  },
+  {
+    "stop_id": 19906,
+    "stop_name": "Burnley Railway Station (Burnley)",
+    "stop_lat": "-37.8275602161665",
+    "stop_lon": "145.007555147088"
+  },
+  {
+    "stop_id": 19907,
+    "stop_name": "East Richmond Railway Station (Richmond)",
+    "stop_lat": "-37.8263999511153",
+    "stop_lon": "144.997065693883"
+  },
+  {
+    "stop_id": 19908,
+    "stop_name": "Richmond Railway Station (Richmond)",
+    "stop_lat": "-37.8240744554248",
+    "stop_lon": "144.990164256273"
+  },
+  {
+    "stop_id": 19909,
+    "stop_name": "Heyington Railway Station (Toorak)",
+    "stop_lat": "-37.8346724432589",
+    "stop_lon": "145.022635270015"
+  },
+  {
+    "stop_id": 19910,
+    "stop_name": "Kooyong Railway Station (Kooyong)",
+    "stop_lat": "-37.8399289425903",
+    "stop_lon": "145.033551606384"
+  },
+  {
+    "stop_id": 19911,
+    "stop_name": "Tooronga Railway Station (Malvern)",
+    "stop_lat": "-37.8493655341752",
+    "stop_lon": "145.041733743833"
+  },
+  {
+    "stop_id": 19912,
+    "stop_name": "Gardiner Railway Station (Glen Iris)",
+    "stop_lat": "-37.8532790774224",
+    "stop_lon": "145.051654659477"
+  },
+  {
+    "stop_id": 19913,
+    "stop_name": "Springvale Railway Station (Springvale)",
+    "stop_lat": "-37.949508781663",
+    "stop_lon": "145.153451830727"
+  },
+  {
+    "stop_id": 19914,
+    "stop_name": "Westall Railway Station (Clayton South)",
+    "stop_lat": "-37.938491213899",
+    "stop_lon": "145.13883262698"
+  },
+  {
+    "stop_id": 19915,
+    "stop_name": "Clayton Railway Station (Clayton)",
+    "stop_lat": "-37.9246825520153",
+    "stop_lon": "145.120534360257"
+  },
+  {
+    "stop_id": 19916,
+    "stop_name": "Huntingdale Railway Station (Oakleigh)",
+    "stop_lat": "-37.9110173407217",
+    "stop_lon": "145.102364317185"
+  },
+  {
+    "stop_id": 19917,
+    "stop_name": "Oakleigh Railway Station (Oakleigh)",
+    "stop_lat": "-37.900372141144",
+    "stop_lon": "145.08830786927"
+  },
+  {
+    "stop_id": 19918,
+    "stop_name": "Hughesdale Railway Station (Hughesdale)",
+    "stop_lat": "-37.8942488758946",
+    "stop_lon": "145.076434737963"
+  },
+  {
+    "stop_id": 19919,
+    "stop_name": "Murrumbeena Railway Station (Murrumbeena)",
+    "stop_lat": "-37.8901983179693",
+    "stop_lon": "145.067374870414"
+  },
+  {
+    "stop_id": 19920,
+    "stop_name": "Carnegie Railway Station (Carnegie)",
+    "stop_lat": "-37.8862414786323",
+    "stop_lon": "145.058575063543"
+  },
+  {
+    "stop_id": 19921,
+    "stop_name": "Werribee Railway Station (Werribee)",
+    "stop_lat": "-37.8993780465601",
+    "stop_lon": "144.661118011171"
+  },
+  {
+    "stop_id": 19922,
+    "stop_name": "Hoppers Crossing Railway Station (Hoppers Crossing)",
+    "stop_lat": "-37.8832761791168",
+    "stop_lon": "144.700954931478"
+  },
+  {
+    "stop_id": 19923,
+    "stop_name": "Laverton Railway Station (Laverton)",
+    "stop_lat": "-37.8636940413851",
+    "stop_lon": "144.772616667956"
+  },
+  {
+    "stop_id": 19924,
+    "stop_name": "Aircraft Railway Station (Laverton)",
+    "stop_lat": "-37.8666059462953",
+    "stop_lon": "144.760809437357"
+  },
+  {
+    "stop_id": 19925,
+    "stop_name": "Westona Railway Station (Altona)",
+    "stop_lat": "-37.8651634836576",
+    "stop_lon": "144.813493563455"
+  },
+  {
+    "stop_id": 19926,
+    "stop_name": "Altona Railway Station (Altona)",
+    "stop_lat": "-37.8671475960047",
+    "stop_lon": "144.829644740664"
+  },
+  {
+    "stop_id": 19927,
+    "stop_name": "Seaholme Railway Station (Seaholme)",
+    "stop_lat": "-37.8678423061915",
+    "stop_lon": "144.840957728627"
+  },
+  {
+    "stop_id": 19928,
+    "stop_name": "Westgarth Railway Station (Northcote)",
+    "stop_lat": "-37.7806206974559",
+    "stop_lon": "144.999233186635"
+  },
+  {
+    "stop_id": 19929,
+    "stop_name": "Dennis Railway Station (Northcote)",
+    "stop_lat": "-37.779187287481",
+    "stop_lon": "145.008241630012"
+  },
+  {
+    "stop_id": 19930,
+    "stop_name": "Fairfield Railway Station (Fairfield)",
+    "stop_lat": "-37.7791712565636",
+    "stop_lon": "145.016905299916"
+  },
+  {
+    "stop_id": 19931,
+    "stop_name": "Alphington Railway Station (Alphington)",
+    "stop_lat": "-37.7783936317016",
+    "stop_lon": "145.031254932307"
+  },
+  {
+    "stop_id": 19932,
+    "stop_name": "Darebin Railway Station (Ivanhoe)",
+    "stop_lat": "-37.7749634109414",
+    "stop_lon": "145.038475977422"
+  },
+  {
+    "stop_id": 19933,
+    "stop_name": "Ivanhoe Railway Station (Ivanhoe)",
+    "stop_lat": "-37.7688967438294",
+    "stop_lon": "145.045425188311"
+  },
+  {
+    "stop_id": 19934,
+    "stop_name": "Eaglemont Railway Station (Eaglemont)",
+    "stop_lat": "-37.7635855335936",
+    "stop_lon": "145.053942691014"
+  },
+  {
+    "stop_id": 19935,
+    "stop_name": "Heidelberg Railway Station (Heidelberg)",
+    "stop_lat": "-37.7570729333161",
+    "stop_lon": "145.060685522992"
+  },
+  {
+    "stop_id": 19936,
+    "stop_name": "Rosanna Railway Station (Rosanna)",
+    "stop_lat": "-37.7428786002719",
+    "stop_lon": "145.066140290226"
+  },
+  {
+    "stop_id": 19937,
+    "stop_name": "Moorabbin Railway Station (Moorabbin)",
+    "stop_lat": "-37.9343532865884",
+    "stop_lon": "145.036738286425"
+  },
+  {
+    "stop_id": 19938,
+    "stop_name": "Patterson Railway Station (Bentleigh)",
+    "stop_lat": "-37.925149188298",
+    "stop_lon": "145.035470026499"
+  },
+  {
+    "stop_id": 19939,
+    "stop_name": "Bentleigh Railway Station (Bentleigh)",
+    "stop_lat": "-37.9174245729258",
+    "stop_lon": "145.036995134208"
+  },
+  {
+    "stop_id": 19940,
+    "stop_name": "McKinnon Railway Station (Mckinnon)",
+    "stop_lat": "-37.9103090338988",
+    "stop_lon": "145.038298971504"
+  },
+  {
+    "stop_id": 19941,
+    "stop_name": "Ormond Railway Station (Ormond)",
+    "stop_lat": "-37.9032116703047",
+    "stop_lon": "145.039613418163"
+  },
+  {
+    "stop_id": 19942,
+    "stop_name": "Glenhuntly Railway Station (Glen Huntly)",
+    "stop_lat": "-37.8897194619673",
+    "stop_lon": "145.042222854186"
+  },
+  {
+    "stop_id": 19943,
+    "stop_name": "Caulfield Railway Station (Caulfield East)",
+    "stop_lat": "-37.8774594614914",
+    "stop_lon": "145.042524781036"
+  },
+  {
+    "stop_id": 19944,
+    "stop_name": "Malvern Railway Station (Malvern)",
+    "stop_lat": "-37.8662532993077",
+    "stop_lon": "145.029293938791"
+  },
+  {
+    "stop_id": 19945,
+    "stop_name": "Armadale Railway Station (Armadale)",
+    "stop_lat": "-37.8564523828025",
+    "stop_lon": "145.019325537875"
+  },
+  {
+    "stop_id": 19946,
+    "stop_name": "Toorak Railway Station (Armadale)",
+    "stop_lat": "-37.8507738052708",
+    "stop_lon": "145.013908582451"
+  },
+  {
+    "stop_id": 19947,
+    "stop_name": "Hawksburn Railway Station (South Yarra)",
+    "stop_lat": "-37.8445908738041",
+    "stop_lon": "145.002142057363"
+  },
+  {
+    "stop_id": 19948,
+    "stop_name": "Sandringham Railway Station (Sandringham)",
+    "stop_lat": "-37.9503301772263",
+    "stop_lon": "145.004561358882"
+  },
+  {
+    "stop_id": 19949,
+    "stop_name": "Hampton Railway Station (Hampton)",
+    "stop_lat": "-37.9379768129133",
+    "stop_lon": "145.00147057003"
+  },
+  {
+    "stop_id": 19950,
+    "stop_name": "Brighton Beach Railway Station (Brighton)",
+    "stop_lat": "-37.9264843202728",
+    "stop_lon": "144.989153550272"
+  },
+  {
+    "stop_id": 19951,
+    "stop_name": "Middle Brighton Railway Station (Brighton)",
+    "stop_lat": "-37.9151344061991",
+    "stop_lon": "144.996299088376"
+  },
+  {
+    "stop_id": 19952,
+    "stop_name": "North Brighton Railway Station (Brighton)",
+    "stop_lat": "-37.9048872134148",
+    "stop_lon": "145.00260503336"
+  },
+  {
+    "stop_id": 19953,
+    "stop_name": "Gardenvale Railway Station (Brighton)",
+    "stop_lat": "-37.8966950752374",
+    "stop_lon": "145.004168434303"
+  },
+  {
+    "stop_id": 19954,
+    "stop_name": "Elsternwick Railway Station (Elsternwick)",
+    "stop_lat": "-37.8847531121206",
+    "stop_lon": "145.000897873416"
+  },
+  {
+    "stop_id": 19955,
+    "stop_name": "Ripponlea Railway Station (Ripponlea)",
+    "stop_lat": "-37.8759064268322",
+    "stop_lon": "144.995236558908"
+  },
+  {
+    "stop_id": 19956,
+    "stop_name": "Balaclava Railway Station (Balaclava)",
+    "stop_lat": "-37.8694877274449",
+    "stop_lon": "144.993512099451"
+  },
+  {
+    "stop_id": 19957,
+    "stop_name": "Windsor Railway Station (Windsor)",
+    "stop_lat": "-37.8560530796968",
+    "stop_lon": "144.992035170295"
+  },
+  {
+    "stop_id": 19958,
+    "stop_name": "Prahran Railway Station (Prahran)",
+    "stop_lat": "-37.8495184845853",
+    "stop_lon": "144.989859924303"
+  },
+  {
+    "stop_id": 19959,
+    "stop_name": "South Yarra Railway Station (South Yarra)",
+    "stop_lat": "-37.8384493490771",
+    "stop_lon": "144.992342213835"
+  },
+  {
+    "stop_id": 19960,
+    "stop_name": "Upfield Railway Station (Coolaroo)",
+    "stop_lat": "-37.6660777887279",
+    "stop_lon": "144.946739938663"
+  },
+  {
+    "stop_id": 19961,
+    "stop_name": "Gowrie Railway Station (Glenroy)",
+    "stop_lat": "-37.7006779971249",
+    "stop_lon": "144.958874324034"
+  },
+  {
+    "stop_id": 19962,
+    "stop_name": "Fawkner Railway Station (Fawkner)",
+    "stop_lat": "-37.7146212867289",
+    "stop_lon": "144.960545025448"
+  },
+  {
+    "stop_id": 19963,
+    "stop_name": "Merlynston Railway Station (Coburg North)",
+    "stop_lat": "-37.7209338911812",
+    "stop_lon": "144.961313546073"
+  },
+  {
+    "stop_id": 19964,
+    "stop_name": "Batman Railway Station (Coburg North)",
+    "stop_lat": "-37.7335228508837",
+    "stop_lon": "144.962840551625"
+  },
+  {
+    "stop_id": 19965,
+    "stop_name": "Coburg Railway Station (Coburg)",
+    "stop_lat": "-37.7423450211381",
+    "stop_lon": "144.963336336826"
+  },
+  {
+    "stop_id": 19966,
+    "stop_name": "Moreland Railway Station (Coburg)",
+    "stop_lat": "-37.7544848430078",
+    "stop_lon": "144.961823032047"
+  },
+  {
+    "stop_id": 19967,
+    "stop_name": "Anstey Railway Station (Brunswick)",
+    "stop_lat": "-37.7612420288492",
+    "stop_lon": "144.960684043548"
+  },
+  {
+    "stop_id": 19968,
+    "stop_name": "Brunswick Railway Station (Brunswick)",
+    "stop_lat": "-37.7677205467189",
+    "stop_lon": "144.959586536251"
+  },
+  {
+    "stop_id": 19969,
+    "stop_name": "Jewell Railway Station (Brunswick)",
+    "stop_lat": "-37.7749870223388",
+    "stop_lon": "144.958716910938"
+  },
+  {
+    "stop_id": 19970,
+    "stop_name": "Royal Park Railway Station (Parkville)",
+    "stop_lat": "-37.7811929299072",
+    "stop_lon": "144.952301268806"
+  },
+  {
+    "stop_id": 19971,
+    "stop_name": "Flemington Bridge Railway Station (North Melbourne)",
+    "stop_lat": "-37.7881399497849",
+    "stop_lon": "144.939323282774"
+  },
+  {
+    "stop_id": 19972,
+    "stop_name": "Macaulay Railway Station (North Melbourne)",
+    "stop_lat": "-37.7942667317326",
+    "stop_lon": "144.936166325307"
+  },
+  {
+    "stop_id": 19973,
+    "stop_name": "North Melbourne Railway Station (West Melbourne)",
+    "stop_lat": "-37.8074187741737",
+    "stop_lon": "144.942569782519"
+  },
+  {
+    "stop_id": 19974,
+    "stop_name": "Clifton Hill Railway Station (Clifton Hill)",
+    "stop_lat": "-37.7886574531492",
+    "stop_lon": "144.995416701875"
+  },
+  {
+    "stop_id": 19975,
+    "stop_name": "Victoria Park Railway Station (Abbotsford)",
+    "stop_lat": "-37.7991578245232",
+    "stop_lon": "144.994451425812"
+  },
+  {
+    "stop_id": 19976,
+    "stop_name": "Collingwood Railway Station (Abbotsford)",
+    "stop_lat": "-37.8045259264571",
+    "stop_lon": "144.993749666428"
+  },
+  {
+    "stop_id": 19977,
+    "stop_name": "North Richmond Railway Station (Richmond)",
+    "stop_lat": "-37.810398356473",
+    "stop_lon": "144.992500261754"
+  },
+  {
+    "stop_id": 19978,
+    "stop_name": "West Richmond Railway Station (Richmond)",
+    "stop_lat": "-37.8149489647723",
+    "stop_lon": "144.991422784198"
+  },
+  {
+    "stop_id": 19979,
+    "stop_name": "Jolimont-MCG Railway Station (East Melbourne)",
+    "stop_lat": "-37.8165270224388",
+    "stop_lon": "144.984098336822"
+  },
+  {
+    "stop_id": 19983,
+    "stop_name": "Macleod Railway Station (Macleod)",
+    "stop_lat": "-37.7260123045348",
+    "stop_lon": "145.069143320058"
+  },
+  {
+    "stop_id": 19984,
+    "stop_name": "Watsonia Railway Station (Watsonia)",
+    "stop_lat": "-37.7109579769573",
+    "stop_lon": "145.083793381187"
+  },
+  {
+    "stop_id": 19985,
+    "stop_name": "Greensborough Railway Station (Greensborough)",
+    "stop_lat": "-37.7039540802734",
+    "stop_lon": "145.108247408528"
+  },
+  {
+    "stop_id": 19986,
+    "stop_name": "Montmorency Railway Station (Montmorency)",
+    "stop_lat": "-37.7152962435564",
+    "stop_lon": "145.121515737914"
+  },
+  {
+    "stop_id": 19987,
+    "stop_name": "Eltham Railway Station (Eltham)",
+    "stop_lat": "-37.7135496724624",
+    "stop_lon": "145.147822019567"
+  },
+  {
+    "stop_id": 19988,
+    "stop_name": "Diamond Creek Railway Station (Diamond Creek)",
+    "stop_lat": "-37.6732974392921",
+    "stop_lon": "145.15850619152"
+  },
+  {
+    "stop_id": 19989,
+    "stop_name": "Wattle Glen Railway Station (Wattle Glen)",
+    "stop_lat": "-37.6639679229939",
+    "stop_lon": "145.181614533441"
+  },
+  {
+    "stop_id": 19990,
+    "stop_name": "Hurstbridge Railway Station (Hurstbridge)",
+    "stop_lat": "-37.6393981687758",
+    "stop_lon": "145.192016891245"
+  },
+  {
+    "stop_id": 19991,
+    "stop_name": "Williamstown Railway Station (Williamstown)",
+    "stop_lat": "-37.8677529166559",
+    "stop_lon": "144.905323308917"
+  },
+  {
+    "stop_id": 19992,
+    "stop_name": "Williamstown Beach Railway Station (Williamstown)",
+    "stop_lat": "-37.8639818878493",
+    "stop_lon": "144.894483676562"
+  },
+  {
+    "stop_id": 19993,
+    "stop_name": "North Williamstown Railway Station (Williamstown)",
+    "stop_lat": "-37.857333476648",
+    "stop_lon": "144.889069465486"
+  },
+  {
+    "stop_id": 19994,
+    "stop_name": "Newport Railway Station (Newport)",
+    "stop_lat": "-37.8427175700734",
+    "stop_lon": "144.883599911799"
+  },
+  {
+    "stop_id": 19995,
+    "stop_name": "Spotswood Railway Station (Spotswood)",
+    "stop_lat": "-37.8306388752155",
+    "stop_lon": "144.885933453191"
+  },
+  {
+    "stop_id": 19996,
+    "stop_name": "Yarraville Railway Station (Yarraville)",
+    "stop_lat": "-37.8158504436292",
+    "stop_lon": "144.889933707057"
+  },
+  {
+    "stop_id": 19997,
+    "stop_name": "Seddon Railway Station (Seddon)",
+    "stop_lat": "-37.8090051386731",
+    "stop_lon": "144.895671569116"
+  },
+  {
+    "stop_id": 20000,
+    "stop_name": "Watergardens Railway Station (Sydenham)",
+    "stop_lat": "-37.7011287184526",
+    "stop_lon": "144.77418045437"
+  },
+  {
+    "stop_id": 20001,
+    "stop_name": "Keilor Plains Railway Station (St Albans)",
+    "stop_lat": "-37.7292793433497",
+    "stop_lon": "144.793738065375"
+  },
+  {
+    "stop_id": 20002,
+    "stop_name": "St Albans Railway Station (St Albans)",
+    "stop_lat": "-37.7448613127395",
+    "stop_lon": "144.800050450996"
+  },
+  {
+    "stop_id": 20003,
+    "stop_name": "Ginifer Railway Station (St Albans)",
+    "stop_lat": "-37.7600670702248",
+    "stop_lon": "144.811348134992"
+  },
+  {
+    "stop_id": 20004,
+    "stop_name": "Albion Railway Station (Sunshine North)",
+    "stop_lat": "-37.7776528079371",
+    "stop_lon": "144.824703607774"
+  },
+  {
+    "stop_id": 20005,
+    "stop_name": "Epping Railway Station (Epping)",
+    "stop_lat": "-37.652186657019",
+    "stop_lon": "145.031067771128"
+  },
+  {
+    "stop_id": 20006,
+    "stop_name": "Lalor Railway Station (Lalor)",
+    "stop_lat": "-37.6658507466575",
+    "stop_lon": "145.017193167351"
+  },
+  {
+    "stop_id": 20007,
+    "stop_name": "Thomastown Railway Station (Thomastown)",
+    "stop_lat": "-37.680338088895",
+    "stop_lon": "145.01427887056"
+  },
+  {
+    "stop_id": 20008,
+    "stop_name": "Keon Park Railway Station (Thomastown)",
+    "stop_lat": "-37.6948701213679",
+    "stop_lon": "145.011883817693"
+  },
+  {
+    "stop_id": 20009,
+    "stop_name": "Ruthven Railway Station (Reservoir)",
+    "stop_lat": "-37.7078975350625",
+    "stop_lon": "145.0095166168"
+  },
+  {
+    "stop_id": 20010,
+    "stop_name": "Reservoir Railway Station (Reservoir)",
+    "stop_lat": "-37.7168849163482",
+    "stop_lon": "145.006995821329"
+  },
+  {
+    "stop_id": 20011,
+    "stop_name": "Regent Railway Station (Reservoir)",
+    "stop_lat": "-37.728402771293",
+    "stop_lon": "145.002772560524"
+  },
+  {
+    "stop_id": 20012,
+    "stop_name": "Preston Railway Station (Preston)",
+    "stop_lat": "-37.7386742406",
+    "stop_lon": "145.000521982623"
+  },
+  {
+    "stop_id": 20013,
+    "stop_name": "Bell Railway Station (Preston)",
+    "stop_lat": "-37.745562121809",
+    "stop_lon": "145.000155033588"
+  },
+  {
+    "stop_id": 20014,
+    "stop_name": "Thornbury Railway Station (Thornbury)",
+    "stop_lat": "-37.7550517929283",
+    "stop_lon": "144.998571518715"
+  },
+  {
+    "stop_id": 20015,
+    "stop_name": "Croxton Railway Station (Northcote)",
+    "stop_lat": "-37.7641010022199",
+    "stop_lon": "144.997056186716"
+  },
+  {
+    "stop_id": 20016,
+    "stop_name": "Northcote Railway Station (Northcote)",
+    "stop_lat": "-37.7698653716401",
+    "stop_lon": "144.995277209924"
+  },
+  {
+    "stop_id": 20017,
+    "stop_name": "Merri Railway Station (Northcote)",
+    "stop_lat": "-37.7778466758725",
+    "stop_lon": "144.992972480498"
+  },
+  {
+    "stop_id": 20019,
+    "stop_name": "Rushall Railway Station (Fitzroy North)",
+    "stop_lat": "-37.7832171114697",
+    "stop_lon": "144.992407080112"
+  },
+  {
+    "stop_id": 20021,
+    "stop_name": "Sunshine Railway Station (Sunshine)",
+    "stop_lat": "-37.7885363319246",
+    "stop_lon": "144.832878204953"
+  },
+  {
+    "stop_id": 20022,
+    "stop_name": "Tottenham Railway Station (West Footscray)",
+    "stop_lat": "-37.7992508990822",
+    "stop_lon": "144.862944937737"
+  },
+  {
+    "stop_id": 20023,
+    "stop_name": "West Footscray Railway Station (West Footscray)",
+    "stop_lat": "-37.8018026560789",
+    "stop_lon": "144.883984791224"
+  },
+  {
+    "stop_id": 20024,
+    "stop_name": "Middle Footscray Railway Station (Footscray)",
+    "stop_lat": "-37.8025046951241",
+    "stop_lon": "144.891472083864"
+  },
+  {
+    "stop_id": 20025,
+    "stop_name": "Footscray Railway Station (Footscray)",
+    "stop_lat": "-37.8010829790878",
+    "stop_lon": "144.90319921519"
+  },
+  {
+    "stop_id": 20026,
+    "stop_name": "South Kensington Railway Station (Kensington)",
+    "stop_lat": "-37.7995308742589",
+    "stop_lon": "144.925469007521"
+  },
+  {
+    "stop_id": 20027,
+    "stop_name": "Flemington Racecourse Railway Station (Flemington)",
+    "stop_lat": "-37.787201923265",
+    "stop_lon": "144.907588697812"
+  },
+  {
+    "stop_id": 20028,
+    "stop_name": "Showgrounds Railway Station (Flemington)",
+    "stop_lat": "-37.7834721968038",
+    "stop_lon": "144.914256890322"
+  },
+  {
+    "stop_id": 20030,
+    "stop_name": "Broadmeadows Railway Station (Broadmeadows)",
+    "stop_lat": "-37.6830492642064",
+    "stop_lon": "144.919613216031"
+  },
+  {
+    "stop_id": 20031,
+    "stop_name": "Jacana Railway Station (Glenroy)",
+    "stop_lat": "-37.69513078513",
+    "stop_lon": "144.915850518758"
+  },
+  {
+    "stop_id": 20032,
+    "stop_name": "Glenroy Railway Station (Glenroy)",
+    "stop_lat": "-37.7045363302301",
+    "stop_lon": "144.917220403897"
+  },
+  {
+    "stop_id": 20033,
+    "stop_name": "Oak Park Railway Station (Oak Park)",
+    "stop_lat": "-37.7179497287183",
+    "stop_lon": "144.921518773078"
+  },
+  {
+    "stop_id": 20034,
+    "stop_name": "Pascoe Vale Railway Station (Pascoe Vale)",
+    "stop_lat": "-37.7307559550065",
+    "stop_lon": "144.928195624317"
+  },
+  {
+    "stop_id": 20035,
+    "stop_name": "Strathmore Railway Station (Strathmore)",
+    "stop_lat": "-37.7435913223491",
+    "stop_lon": "144.927315711579"
+  },
+  {
+    "stop_id": 20036,
+    "stop_name": "Glenbervie Railway Station (Essendon)",
+    "stop_lat": "-37.7472098464194",
+    "stop_lon": "144.920938683118"
+  },
+  {
+    "stop_id": 20037,
+    "stop_name": "Essendon Railway Station (Essendon)",
+    "stop_lat": "-37.7560116950847",
+    "stop_lon": "144.916197501013"
+  },
+  {
+    "stop_id": 20038,
+    "stop_name": "Moonee Ponds Railway Station (Moonee Ponds)",
+    "stop_lat": "-37.7657066626859",
+    "stop_lon": "144.919160695911"
+  },
+  {
+    "stop_id": 20039,
+    "stop_name": "Ascot Vale Railway Station (Ascot Vale)",
+    "stop_lat": "-37.7753060851406",
+    "stop_lon": "144.921820740203"
+  },
+  {
+    "stop_id": 20040,
+    "stop_name": "Newmarket Railway Station (Flemington)",
+    "stop_lat": "-37.7873276708958",
+    "stop_lon": "144.928978466737"
+  },
+  {
+    "stop_id": 20041,
+    "stop_name": "Kensington Railway Station (Kensington)",
+    "stop_lat": "-37.793780219493",
+    "stop_lon": "144.930524437443"
+  },
+  {
+    "stop_id": 20042,
+    "stop_name": "Box Hill Railway Station (Box Hill)",
+    "stop_lat": "-37.8192216542506",
+    "stop_lon": "145.121428934402"
+  },
+  {
+    "stop_id": 22180,
+    "stop_name": "Southern Cross Railway Station (Melbourne City)",
+    "stop_lat": "-37.8179364275294",
+    "stop_lon": "144.951411219785"
+  },
+  {
+    "stop_id": 40220,
+    "stop_name": "Roxburgh Park Railway Station (Roxburgh Park)",
+    "stop_lat": "-37.6382312060577",
+    "stop_lon": "144.935403682146"
+  },
+  {
+    "stop_id": 40221,
+    "stop_name": "Craigieburn Railway Station (Craigieburn)",
+    "stop_lat": "-37.6018169039432",
+    "stop_lon": "144.943320312888"
+  },
+  {
+    "stop_id": 44817,
+    "stop_name": "Coolaroo Railway Station (Coolaroo)",
+    "stop_lat": "-37.6610025309683",
+    "stop_lon": "144.92605556678"
+  },
+  {
+    "stop_id": 45793,
+    "stop_name": "Lynbrook Railway Station (Lynbrook)",
+    "stop_lat": "-38.0573411764351",
+    "stop_lon": "145.249275114245"
+  },
+  {
+    "stop_id": 45794,
+    "stop_name": "Cardinia Road Railway Station (Pakenham)",
+    "stop_lat": "-38.0712904706636",
+    "stop_lon": "145.437791007046"
+  },
+  {
+    "stop_id": 45795,
+    "stop_name": "South Morang Railway Station (South Morang)",
+    "stop_lat": "-37.6491587964667",
+    "stop_lon": "145.067032423831"
+  },
+  {
+    "stop_id": 46468,
+    "stop_name": "Williams Landing Railway Station (Williams Landing)",
+    "stop_lat": "-37.8698653272894",
+    "stop_lon": "144.747444719947"
+  },
+  {
+    "stop_id": 52095,
+    "stop_name": "Southland Railway Station (Cheltenham)",
+    "stop_lat": "-37.9587557102014",
+    "stop_lon": "145.049120854534"
+  },
+  {
+    "stop_id": 52159,
+    "stop_name": "Middle Gorge Railway Station (South Morang)",
+    "stop_lat": "-37.6440613010269",
+    "stop_lon": "145.092143976183"
+  },
+  {
+    "stop_id": 52160,
+    "stop_name": "Hawkstowe Railway Station (South Morang)",
+    "stop_lat": "-37.6229945495185",
+    "stop_lon": "145.097396181538"
+  },
+  {
+    "stop_id": 52161,
+    "stop_name": "Mernda Railway Station (Mernda)",
+    "stop_lat": "-37.6025479723383",
+    "stop_lon": "145.100884990291"
+  }
+ ]
