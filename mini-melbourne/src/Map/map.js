@@ -30,6 +30,7 @@ export default function Map() {
       center: [lng, lat],
       zoom: zoom
     });
+    map.current.addControl(new mapboxgl.NavigationControl());
   });
 
   useEffect(() => {
@@ -82,7 +83,6 @@ export default function Map() {
       <h1>Hello</h1>
       <div className="sidebar">
         Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
-        
       </div>
       <div ref={mapContainer} className="map-container" />
       <Popup nextStation="Flinders Street" etaTime="7:30pm" occupancy="Light"/>
