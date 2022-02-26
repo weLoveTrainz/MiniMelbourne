@@ -9,6 +9,7 @@ import stations from './data/stations.json';
 import getPathData from './data/getPathData';
 import samplePathData from './data/100.T2.2-GLW-B-mjp-1.2.H.json';
 import { ScenegraphLayer } from '@deck.gl/mesh-layers';
+import Carriage from '../Train/TrainData/Carriage';
 
 export const MAPBOX_ACCESS_TOKEN =
   'pk.eyJ1IjoidGhlb3J2b2x0IiwiYSI6ImNreGQ3c3hoZTNkbjUyb3BtMHVnc3ZldGYifQ.r5r7g8XYCkOivBeapa9gSw';
@@ -152,29 +153,32 @@ function App() {
   console.log(samplePathData);
 
   return (
-    <DeckGL
-      initialViewState={INITIAL_VIEW_STATE}
-      controller={true}
-      layers={layers}
-      onClick={() => {}}
-      onViewStateChange={hideTooltip}
-      pickingRadius={20}
-    >
-      <Map
+    <>
+      <Carriage />
+      <DeckGL
         initialViewState={INITIAL_VIEW_STATE}
-        style={{ width: 600, height: 400 }}
-        mapboxAccessToken={MAPBOX_ACCESS_TOKEN}
-        mapStyle="mapbox://styles/theorvolt/ckxd802bwenhq14jmeevpfu3t"
-        dragPan={false}
-        cursor={'crosshair'}
+        controller={true}
+        layers={layers}
+        onClick={() => {}}
+        onViewStateChange={hideTooltip}
+        pickingRadius={20}
       >
-        <NavigationControl
-          position="top-left"
-          onViewportChange={(viewport) => setZoom(viewport)}
-        />
-      </Map>
-      {renderTooltip(hoverInfo)}
-    </DeckGL>
+        <Map
+          initialViewState={INITIAL_VIEW_STATE}
+          style={{ width: 600, height: 400 }}
+          mapboxAccessToken={MAPBOX_ACCESS_TOKEN}
+          mapStyle="mapbox://styles/theorvolt/ckxd802bwenhq14jmeevpfu3t"
+          dragPan={false}
+          cursor={'crosshair'}
+        >
+          <NavigationControl
+            position="top-left"
+            onViewportChange={(viewport) => setZoom(viewport)}
+          />
+        </Map>
+        {renderTooltip(hoverInfo)}
+      </DeckGL>
+    </>
   );
 }
 
