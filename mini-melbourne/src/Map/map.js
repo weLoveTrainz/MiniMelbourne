@@ -77,6 +77,7 @@ function App() {
     }),
     new IconLayer({
       id: 'icon-lnglat',
+      pickable: true,
       data: newPoints,
       iconAtlas:
         'https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/icon-atlas.png',
@@ -95,6 +96,10 @@ function App() {
         return 1;
       },
       opacity: 0.8,
+      onClick: (event, info) => {
+        console.log(event);
+        console.log(info);
+      },
     }),
   ];
 
