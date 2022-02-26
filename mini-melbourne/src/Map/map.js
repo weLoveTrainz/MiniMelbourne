@@ -8,6 +8,7 @@ import { IconLayer, PathLayer } from '@deck.gl/layers';
 import stations from './data/stations.json';
 import getPathData from './data/getPathData';
 import samplePathData from './data/100.T2.2-GLW-B-mjp-1.2.H.json';
+import { ScenegraphLayer } from '@deck.gl/mesh-layers';
 
 export const MAPBOX_ACCESS_TOKEN =
   'pk.eyJ1IjoidGhlb3J2b2x0IiwiYSI6ImNreGQ3c3hoZTNkbjUyb3BtMHVnc3ZldGYifQ.r5r7g8XYCkOivBeapa9gSw';
@@ -132,28 +133,19 @@ function App() {
       opacity: 0.8,
       onClick: expandTooltip,
     }),
-    new IconLayer({
-      id: 'trains',
-      pickable: true,
+    new ScenegraphLayer({
+      id: 'scenegraph-layer',
       data: trainPoint,
-      iconAtlas:
-        'https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/icon-atlas.png',
-      iconMapping,
-      sizeScale: 100,
-      getPosition: (d) => {
-        return d.COORDINATES;
+      pickable: true,
+      scenegraph:
+        'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/BoxAnimated/glTF-Binary/BoxAnimated.glb',
+      getPosition: (d) => d.COORDINATES,
+      getOrientation: (d) => [0, Math.random() * 180, 90],
+      _animations: {
+        '*': { speed: 5 },
       },
-      getColor: (d) => [64, 64, 72],
-      getIcon: (d) => {
-        // return  (d.PLACEMENT === 'SW' ? 'marker' : 'marker-warning')
-        return 'marker';
-      },
-      getSize: (d) => {
-        // return (d.RACKS > 2 ? 2 : 1)
-        return 1;
-      },
-      opacity: 0.8,
-      onClick: expandTooltip,
+      sizeScale: 250,
+      _lighting: 'pbr',
     }),
   ];
 
@@ -187,3 +179,27 @@ function App() {
 }
 
 export default App;
+
+// new IconLayer({
+//   id: 'trains',
+//   pickable: true,
+//   data: trainPoint,
+//   iconAtlas:
+//     'https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/icon-atlas.png',
+//   iconMapping,
+//   sizeScale: 100,
+//   getPosition: (d) => {
+//     return d.COORDINATES;
+//   },
+//   getColor: (d) => [64, 64, 72],
+//   getIcon: (d) => {
+//     // return  (d.PLACEMENT === 'SW' ? 'marker' : 'marker-warning')
+//     return 'marker';
+//   },
+//   getSize: (d) => {
+//     // return (d.RACKS > 2 ? 2 : 1)
+//     return 1;
+//   },
+//   opacity: 0.8,
+//   onClick: expandTooltip,
+// }),
