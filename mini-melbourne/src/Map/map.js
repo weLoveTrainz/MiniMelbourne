@@ -3,7 +3,7 @@ import Map, { Marker } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import DeckGL from '@deck.gl/react';
 import { LineLayer } from '@deck.gl/layers';
-import marker from './marker.png';
+import { StationMarkers } from './Stations';
 
 const MAPBOX_ACCESS_TOKEN =
   'pk.eyJ1IjoidGhlb3J2b2x0IiwiYSI6ImNreGQ3c3hoZTNkbjUyb3BtMHVnc3ZldGYifQ.r5r7g8XYCkOivBeapa9gSw';
@@ -43,9 +43,7 @@ function App() {
         mapboxAccessToken={MAPBOX_ACCESS_TOKEN}
         mapStyle="mapbox://styles/theorvolt/ckxd802bwenhq14jmeevpfu3t"
       >
-        <Marker longitude={144.96696436166} latitude={-37.8} anchor="bottom">
-          <img src={marker} />
-        </Marker>
+        <StationMarkers />
       </Map>
     </DeckGL>
   );
