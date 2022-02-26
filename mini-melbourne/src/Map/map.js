@@ -1,16 +1,24 @@
-import React, { useRef, useEffect, useState } from "react";
-import Popup from "../Train/TrainData/Popup";
-import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
-import "./map.css";
-import stations from "./data/stations.json";
-import { MapboxLayer } from "@deck.gl/mapbox";
-import { PathLayer } from "@deck.gl/layers";
-import cardType from '../Train/TrainData/Popup'
+import * as React from 'react';
+import Map, { Marker } from 'react-map-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
+import DeckGL from '@deck.gl/react';
+import { LineLayer, PathLayer } from '@deck.gl/layers';
+import { StationMarkers } from './Stations';
+import Popup from '../Train/TrainData/Popup';
 
-mapboxgl.accessToken =
-  "pk.eyJ1IjoidGhlb3J2b2x0IiwiYSI6ImNreGQ3c3hoZTNkbjUyb3BtMHVnc3ZldGYifQ.r5r7g8XYCkOivBeapa9gSw";
+const MAPBOX_ACCESS_TOKEN =
+  'pk.eyJ1IjoidGhlb3J2b2x0IiwiYSI6ImNreGQ3c3hoZTNkbjUyb3BtMHVnc3ZldGYifQ.r5r7g8XYCkOivBeapa9gSw';
 
-const data = [
+// Viewport settings
+const INITIAL_VIEW_STATE = {
+  longitude: 144.966964346166,
+  latitude: -37.8183051340585,
+  zoom: 13,
+  pitch: 0,
+  bearing: 0,
+};
+
+const pathData = [
   {
     path: [
       [144.966964346166, -37.8183051340585],
@@ -20,80 +28,73 @@ const data = [
       [144.970386306518, -37.8173818877091],
       [144.971989018237, -37.8169318797019],
     ],
-    name: "Richmond",
+    name: 'Richmond - Millbrae',
     color: [255, 0, 0],
   },
 ];
 
-export default function Map() {
-  const [lng, setLng] = useState(144.966964346166);
-  const [lat, setLat] = useState(-37.8183051340585);
-  const [zoom, setZoom] = useState(10);
-  const mapContainerRef = useRef(null);
-  const [map, setMap] = useState(null);
+// Data to be used by the LineLayer
+const data = [
+  {
+    sourcePosition: [144.966964346166, -37.8183051340585],
+    targetPosition: [144.971989018237, -37.8169318797019],
+  },
+];
 
-  // Initialize map when component mounts
-  useEffect(() => {
-    const map = new mapboxgl.Map({
-      container: mapContainerRef.current,
-      style: "mapbox://styles/theorvolt/ckxd802bwenhq14jmeevpfu3t",
-      center: [lng, lat],
-      zoom: zoom,
-    });
+export const positionOrigin = [144.966964346166, -37.8183051340585];
 
-    map.on("move", () => {
-      setLng(map.getCenter().lng.toFixed(4));
-      setLat(map.getCenter().lat.toFixed(4));
-      setZoom(map.getZoom().toFixed(2));
-    });
+export const zigzag = [
+  {
+    // A-B-A
+    path: [
+      [144.966964346166, -37.8183051340585],
+      [144.967731536194, -37.8180840725787],
+      [144.967915434574, -37.8180061406911],
+      [144.968831710922, -37.8177335742904],
+      [144.970386306518, -37.8173818877091],
+      [144.971989018237, -37.8169318797019],
+    ],
+    name: 'Richmond',
+    color: [255, 0, 0],
+  },
+];
 
-    const deckLayer = new MapboxLayer({
-      id: "path-layer",
-      type: PathLayer,
-      data,
-      pickable: true,
-      widthScale: 20,
-      widthMinPixels: 2,
-      getPath: (d) => d.path,
+function App() {
+  const layers = [
+    new LineLayer({ id: 'line-layer', data }),
+    new PathLayer({
+      data: zigzag,
+      getPath: (f) => f.path,
       getColor: (d) => d.color,
-      getWidth: (d) => 0.1,
-    });
+      getWidth: 10,
+      widthMinPixels: 1,
+      pickable: true,
+    }),
+  ];
 
-    map.on("load", () => {
-      setMap(map);
-      map.addLayer(deckLayer);
-    });
-
-    // popup stuff 
-    // create the popup
-      const popup = new mapboxgl.Popup({ offset: 25 }).setText(
-      'Construction on the Washington Monument began in 1848.'
-      );
-
-      stations.map((station) => {
-        return new mapboxgl.Marker()
-          .setLngLat([station.stop_lon, station.stop_lat])
-          .setPopup(popup)
-          .addTo(map);
-      });
-
-    // Clean up on unmount
-    return () => map.remove();
-  }, []);
-
-  useEffect(() => {
-    if (map) {
-      
-    }
-  }, [map]);
+  console.log(zigzag);
 
   return (
-    <div>
-      <div ref={mapContainerRef} className="map-container" />
-      <Popup nextStation="Flinders Street" etaTime="7:30pm" occupancy="Light" type={cardType.TRAIN} />
-      <div className="sidebar">
-        Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
-      </div>
-    </div>
+    <DeckGL
+      initialViewState={INITIAL_VIEW_STATE}
+      controller={true}
+      layers={layers}
+    >
+      <Map
+        initialViewState={{
+          longitude: 144.966964346166,
+          latitude: -37.8183051340585,
+          zoom: 14,
+        }}
+        style={{ width: 600, height: 400 }}
+        mapboxAccessToken={MAPBOX_ACCESS_TOKEN}
+        mapStyle="mapbox://styles/theorvolt/ckxd802bwenhq14jmeevpfu3t"
+      >
+        <StationMarkers />
+      </Map>
+      <Popup nextStation="Flinders Street" etaTime="7:30pm" occupancy="Light" />
+    </DeckGL>
   );
 }
+
+export default App;
