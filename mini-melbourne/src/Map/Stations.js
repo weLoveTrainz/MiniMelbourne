@@ -11,6 +11,8 @@ export const StationMarkers = () => {
             longitude={station.stop_lon}
             latitude={station.stop_lat}
             anchor="bottom"
+            clickTolerance={10000}
+            onClick={() => console.log('Hi')}
           >
             <img src={marker} />
           </Marker>

@@ -2,12 +2,17 @@ import * as React from 'react';
 import Map from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import DeckGL from '@deck.gl/react';
-import { PathLayer } from '@deck.gl/layers';
+import { IconLayer, PathLayer } from '@deck.gl/layers';
 import { StationMarkers } from './Stations';
 import Popup from '../Train/TrainData/Popup';
+import points from './data/sf.bike.parking.json';
+import stations from './data/stations.json';
+// import ICON_ATLAS from './data/icon-atlas.png';
 
 const MAPBOX_ACCESS_TOKEN =
   'pk.eyJ1IjoidGhlb3J2b2x0IiwiYSI6ImNreGQ3c3hoZTNkbjUyb3BtMHVnc3ZldGYifQ.r5r7g8XYCkOivBeapa9gSw';
+
+const ICON_ATLAS = './data/icon-atlas.png';
 
 // Viewport settings
 const INITIAL_VIEW_STATE = {
@@ -16,6 +21,10 @@ const INITIAL_VIEW_STATE = {
   zoom: 13,
   pitch: 0,
   bearing: 0,
+};
+
+const iconMapping = {
+  marker: { x: 0, y: 0, width: 128, height: 128, mask: true },
 };
 
 export const positionOrigin = [144.966964346166, -37.8183051340585];
@@ -35,7 +44,22 @@ export const pathData = [
   },
 ];
 
+const iconData = [
+  {
+    name: 'Colma (COLM)',
+    address: '365 D Street, Colma CA 94014',
+    exits: 4214,
+    coordinates: [144.966964346166, -37.8183051340585],
+  },
+];
+
 function App() {
+  console.log(points);
+  const newPoints = stations.map((station) => {
+    return {
+      LOCATION_NAME: station.stop_name,
+    };
+  });
   const layers = [
     new PathLayer({
       data: pathData,
@@ -44,6 +68,19 @@ function App() {
       getWidth: 10,
       widthMinPixels: 1,
       pickable: true,
+    }),
+    new IconLayer({
+      id: 'icon-lnglat',
+      data: points,
+      iconAtlas:
+        'https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/icon-atlas.png',
+      iconMapping,
+      sizeScale: 12,
+      getPosition: (d) => d.COORDINATES,
+      getColor: (d) => [64, 64, 72],
+      getIcon: (d) => (d.PLACEMENT === 'SW' ? 'marker' : 'marker-warning'),
+      getSize: (d) => (d.RACKS > 2 ? 2 : 1),
+      opacity: 0.8,
     }),
   ];
 
@@ -58,6 +95,8 @@ function App() {
         style={{ width: 600, height: 400 }}
         mapboxAccessToken={MAPBOX_ACCESS_TOKEN}
         mapStyle="mapbox://styles/theorvolt/ckxd802bwenhq14jmeevpfu3t"
+        dragPan={false}
+        cursor={'crosshair'}
       >
         <StationMarkers />
       </Map>
