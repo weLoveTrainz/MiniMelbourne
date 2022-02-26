@@ -9,6 +9,7 @@ import stations from './data/stations.json';
 import getPathData from './data/getPathData';
 import samplePathData from './data/100.T2.2-GLW-B-mjp-1.2.H.json';
 import { ScenegraphLayer } from '@deck.gl/mesh-layers';
+import getNextStation from '../Train/TrainData/GetNextStation';
 
 export const MAPBOX_ACCESS_TOKEN =
   'pk.eyJ1IjoidGhlb3J2b2x0IiwiYSI6ImNreGQ3c3hoZTNkbjUyb3BtMHVnc3ZldGYifQ.r5r7g8XYCkOivBeapa9gSw';
