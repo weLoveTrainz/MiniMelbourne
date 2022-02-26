@@ -7,6 +7,7 @@ import DeckGL from '@deck.gl/react';
 import { IconLayer, PathLayer } from '@deck.gl/layers';
 import stations from './data/stations.json';
 import getPathData from './data/getPathData';
+import getTrainPointsData from './data/getTrainPointsData';
 import samplePathData from './data/100.T2.2-GLW-B-mjp-1.2.H.json';
 import { ScenegraphLayer } from '@deck.gl/mesh-layers';
 
@@ -49,6 +50,8 @@ function App() {
     },
   ]);
 
+  const [trainPoints, setTrainPoints] = useState({});
+
   const newPoints = stations.map((station) => {
     return {
       ID: station.stop_id,
@@ -88,14 +91,21 @@ function App() {
   // periodic fetch and display
   // 15 seconds lurp
   React.useEffect(() => {
-    const interval = setInterval(() => {
+    const interval = setInterval(async () => {
+      const data = await getTrainPointsData();
+      // const filtered = data.services.filter(
+      //   (trainPoint) => Math.abs(trainPoint.coords[0] - 144.9671) < 20
+      // );
+      // console.log(filtered);
       setCount((prevCount) => (prevCount += 1));
+      console.log(data);
       setTrainPoint([
         {
           ID: 'train_id',
           COORDINATES: samplePathData.shape_file[count],
         },
       ]);
+      setTrainPoints(data.services);
     }, 1000);
     return () => clearInterval(interval);
   });
@@ -139,6 +149,20 @@ function App() {
       scenegraph:
         'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/BoxAnimated/glTF-Binary/BoxAnimated.glb',
       getPosition: (d) => d.COORDINATES,
+      getOrientation: (d) => [0, Math.random() * 180, 90],
+      _animations: {
+        '*': { speed: 5 },
+      },
+      sizeScale: 250,
+      _lighting: 'pbr',
+    }),
+    new ScenegraphLayer({
+      id: 'scenegraph-layer',
+      data: trainPoints ?? [],
+      pickable: true,
+      scenegraph:
+        'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/BoxAnimated/glTF-Binary/BoxAnimated.glb',
+      getPosition: (d) => d.coords,
       getOrientation: (d) => [0, Math.random() * 180, 90],
       _animations: {
         '*': { speed: 5 },
