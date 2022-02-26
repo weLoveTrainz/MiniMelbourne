@@ -63,8 +63,6 @@ const Dialog = (props) => {
       raised={true}
       sx={{
         borderRadius: '16px',
-        alignItems: 'center',
-        justifyContent: 'center',
         padding: 4,
       }}
     >
