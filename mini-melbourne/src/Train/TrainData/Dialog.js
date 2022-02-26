@@ -68,7 +68,7 @@ const Dialog = (props) => {
     >
       <CardMedia
         component="img"
-        sx={{ width: 56, margin: 2, alignSelf: "start"}}
+        sx={{ width: 56, margin: 2, alignSelf: "start" }}
         image={props.type === cardType.TRAIN ? trainIcon : trainStationIcon}
         alt="Live from space album cover"
       />
@@ -95,7 +95,12 @@ const Dialog = (props) => {
               </Typography>
             </div>
           )}
+          {
 
+            console.log(props.nextStation)
+            
+          }
+          {console.log(props.type)}
           {props.cardType === cardType.TRAIN && (
             <div>
               <Typography
@@ -103,16 +108,22 @@ const Dialog = (props) => {
                 color="text.secondary"
                 sx={{ lineHeight: 1.5 }}
               >
-                <span className={classes.subtitle}>Car Park Occupancy:</span>{" "}
-                {props.carParkOccupancy}
+                <span className={classes.subtitle}>Next Station:</span>{" "}
+                {props.nextStation}
               </Typography>
               <Typography
                 variant="body2"
                 color="text.secondary"
                 sx={{ lineHeight: 1.5 }}
               >
-                <span className={classes.subtitle}>Expected Occupancy:</span>{" "}
-                {props.carParkOccupancy}
+                <span className={classes.subtitle}>ETA:</span> {props.eta}
+              </Typography>
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{ lineHeight: 1.5 }}
+              >
+                <span className={classes.trainOccupancy}>Train Occupancy:</span> {props.eta}
               </Typography>
             </div>
           )}
