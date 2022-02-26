@@ -100,7 +100,6 @@ export default function Map() {
         Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
       </div>
       <div ref={mapContainer} className="map-container" />
-      <Popup nextStation="Flinders Street" etaTime="7:30pm" occupancy="Light" />
     </div>
   );
 }
