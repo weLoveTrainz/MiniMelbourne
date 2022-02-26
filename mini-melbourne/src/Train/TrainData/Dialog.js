@@ -145,13 +145,13 @@ const Dialog = (props) => {
                   </span>{' '}
                   {props.eta}
                 </Typography>
+                  {/* TODO: Make this conditional depending on train type */}
+                 <TrainCarriages carriageCapacities={testCapacities} />
               </div>
             )}
           </CardContent>
         </Box>
       </div>
-      {/* TODO: Make this conditional depending on train type */}
-      <TrainCarriages carriageCapacities={testCapacities} />
     </Card>
   );
 };
