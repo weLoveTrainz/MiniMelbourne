@@ -73,10 +73,15 @@ export const zigzag = [
   {
     // A-B-A
     path: [
-      [positionOrigin[0] - 0.005, positionOrigin[1] + 0.005],
-      [positionOrigin[0] - 0.005, positionOrigin[1] - 0.005],
-      [positionOrigin[0] - 0.005, positionOrigin[1] + 0.005],
+      [144.966964346166, -37.8183051340585],
+      [144.967731536194, -37.8180840725787],
+      [144.967915434574, -37.8180061406911],
+      [144.968831710922, -37.8177335742904],
+      [144.970386306518, -37.8173818877091],
+      [144.971989018237, -37.8169318797019],
     ],
+    name: 'Richmond',
+    color: [255, 0, 0],
   },
 ];
 
@@ -86,11 +91,14 @@ function App() {
     new PathLayer({
       data: zigzag,
       getPath: (f) => f.path,
+      getColor: (d) => d.color,
       getWidth: 10,
       widthMinPixels: 1,
       pickable: true,
     }),
   ];
+
+  console.log(zigzag);
 
   return (
     <DeckGL
