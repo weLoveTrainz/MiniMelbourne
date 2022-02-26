@@ -1,20 +1,21 @@
-import * as React from "react";
-import { useState } from "react";
-import Map, { NavigationControl } from "react-map-gl";
-import "mapbox-gl/dist/mapbox-gl.css";
-import Dialog, { cardType } from "../Train/TrainData/Dialog";
-import DeckGL from "@deck.gl/react";
-import { IconLayer, PathLayer } from "@deck.gl/layers";
-import stations from "./data/stations.json";
-import getPathData from "./data/getPathData";
-import getTrainPointsData from "./data/getTrainPointsData";
-import samplePathData from "./data/100.T2.2-GLW-B-mjp-1.2.H.json";
-import { ScenegraphLayer } from "@deck.gl/mesh-layers";
-import getNextStation from "../Train/TrainData/GetNextStation";
-import getTrainLine from "../Train/TrainData/GetTrainLine";
+import * as React from 'react';
+import { useState } from 'react';
+import Map, { NavigationControl } from 'react-map-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
+import Dialog, { cardType } from '../Train/TrainData/Dialog';
+import DeckGL from '@deck.gl/react';
+import { IconLayer, PathLayer } from '@deck.gl/layers';
+import stations from './data/stations.json';
+import getPathData from './data/getPathData';
+import samplePathData from './data/100.T2.2-GLW-B-mjp-1.2.H.json';
+import { ScenegraphLayer } from '@deck.gl/mesh-layers';
+import Carriage from '../Train/TrainData/Carriage';
+import getTrainPointsData from './data/getTrainPointsData';
+import getNextStation from '../Train/TrainData/GetNextStation';
+import getTrainLine from '../Train/TrainData/GetTrainLine';
 
 export const MAPBOX_ACCESS_TOKEN =
-  "pk.eyJ1IjoidGhlb3J2b2x0IiwiYSI6ImNreGQ3c3hoZTNkbjUyb3BtMHVnc3ZldGYifQ.r5r7g8XYCkOivBeapa9gSw";
+  'pk.eyJ1IjoidGhlb3J2b2x0IiwiYSI6ImNreGQ3c3hoZTNkbjUyb3BtMHVnc3ZldGYifQ.r5r7g8XYCkOivBeapa9gSw';
 
 export const iconMapping = {
   marker: { x: 0, y: 0, width: 128, height: 128, mask: true },
@@ -27,7 +28,7 @@ function renderTooltip(info) {
     return (
       <div
         className="tooltip interactive"
-        style={{ left: info.x, top: info.y, position: "absolute" }}
+        style={{ left: info.x, top: info.y, position: 'absolute' }}
       >
         <Dialog
           title={info.object.LOCATION_NAME}
@@ -58,13 +59,13 @@ function App() {
       return (
         <div
           className="tooltip interactive"
-          style={{ left: info.x, top: info.y, position: "absolute" }}
+          style={{ left: info.x, top: info.y, position: 'absolute' }}
         >
           <Dialog
             title={trainName.line_name}
             nextStation={nextStop.stop.name}
             eta={nextStop.arrival}
-            occupancy={`${"Heavy"}%`}
+            occupancy={`${'Heavy'}%`}
             cardType={cardType.TRAIN}
           />
         </div>
@@ -74,8 +75,8 @@ function App() {
 
   const [trainPoint, setTrainPoint] = useState([
     {
-      Name: "yamum",
-      ID: "train_id",
+      Name: 'yamum',
+      ID: 'train_id',
       COORDINATES: [144.966964346166, -37.8183051340585],
     },
   ]);
@@ -102,7 +103,7 @@ function App() {
   };
 
   const showTrainInfo = (info) => {
-    console.log(info)
+    console.log(info);
     if (info) {
       setTrainInfo(info);
     } else {
@@ -129,27 +130,27 @@ function App() {
 
     const nextStation = async (trip_id) => {
       getNextStation(trip_id).then((res) => {
-        setNextStop(res)
+        setNextStop(res);
       });
     };
 
     const getTripId = async (trip_id) => {
       getTrainLine(trip_id).then((res) => {
         setTrainName(res);
-      })
-    }
-    getTripId("379.T2.2-BEL-B-mjp-1.26.R"); 
-    
+      });
+    };
+    getTripId('379.T2.2-BEL-B-mjp-1.26.R');
+
     // For each train (id), call getNextStation
-    const nextStation2 = async () => { 
+    const nextStation2 = async () => {
       const liveData = getTrainPointsData();
-      for (let obj in liveData ) {
-        console.log(obj.services.trip_id)
-        nextStation(obj.services.trip_id)
+      for (let obj in liveData) {
+        console.log(obj.services.trip_id);
+        nextStation(obj.services.trip_id);
       }
-    }
+    };
     // nextStation2();
-    nextStation("379.T2.2-BEL-B-mjp-1.26.R");
+    nextStation('379.T2.2-BEL-B-mjp-1.26.R');
   }, []);
 
   // periodic fetch and display
@@ -160,7 +161,7 @@ function App() {
       setCount((prevCount) => (prevCount += 1));
       setTrainPoint([
         {
-          ID: "train_id",
+          ID: 'train_id',
           COORDINATES: samplePathData.shape_file[count],
         },
       ]);
@@ -179,11 +180,11 @@ function App() {
       pickable: true,
     }),
     new IconLayer({
-      id: "icon-lnglat",
+      id: 'icon-lnglat',
       pickable: true,
       data: newPoints,
       iconAtlas:
-        "https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/icon-atlas.png",
+        'https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/icon-atlas.png',
       iconMapping,
       sizeScale: 20,
       getPosition: (d) => {
@@ -192,7 +193,7 @@ function App() {
       getColor: (d) => [64, 64, 72],
       getIcon: (d) => {
         // return  (d.PLACEMENT === 'SW' ? 'marker' : 'marker-warning')
-        return "marker";
+        return 'marker';
       },
       getSize: (d) => {
         // return (d.RACKS > 2 ? 2 : 1)
@@ -206,14 +207,14 @@ function App() {
       data: trainPoints ?? [],
       pickable: true,
       scenegraph:
-        "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/BoxAnimated/glTF-Binary/BoxAnimated.glb",
+        'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/BoxAnimated/glTF-Binary/BoxAnimated.glb',
       getPosition: (d) => d.coords,
       getOrientation: (d) => [0, Math.random() * 180, 90],
       _animations: {
-        "*": { speed: 5 },
+        '*': { speed: 5 },
       },
       sizeScale: 250,
-      _lighting: "pbr",
+      _lighting: 'pbr',
       onClick: showTrainInfo,
     }),
   ];
@@ -233,7 +234,7 @@ function App() {
         mapboxAccessToken={MAPBOX_ACCESS_TOKEN}
         mapStyle="mapbox://styles/theorvolt/ckxd802bwenhq14jmeevpfu3t"
         dragPan={false}
-        cursor={"crosshair"}
+        cursor={'crosshair'}
       >
         <NavigationControl
           position="top-left"
