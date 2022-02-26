@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import CardMedia from "@mui/material/CardMedia";
 import trainIcon from "../../assets/Train.png";
 import trainStationIcon from "../../assets/TrainStation.png";
+import getNextStation from './GetNextStation'
 import Box from "@mui/material/Box";
 
 export const cardType = {
