@@ -90,7 +90,6 @@ function App() {
   React.useEffect(() => {
     const interval = setInterval(() => {
       setCount((prevCount) => (prevCount += 1));
-      console.log(samplePathData.shape_file[count]);
       setTrainPoint([
         {
           ID: 'train_id',
