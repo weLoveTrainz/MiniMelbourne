@@ -1,11 +1,12 @@
 import * as React from "react";
 import { useState } from "react";
-import Map, { NavigationControl, GeolocateControl } from "react-map-gl";
+import Map, { NavigationControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Dialog, { cardType } from "../Train/TrainData/Dialog";
 import DeckGL from "@deck.gl/react";
 import { IconLayer, PathLayer } from "@deck.gl/layers";
 import stations from "./data/stations.json";
+import getPathData from './data/getPathData';
 
 const MAPBOX_ACCESS_TOKEN =
   "pk.eyJ1IjoidGhlb3J2b2x0IiwiYSI6ImNreGQ3c3hoZTNkbjUyb3BtMHVnc3ZldGYifQ.r5r7g8XYCkOivBeapa9gSw";
@@ -41,6 +42,7 @@ function renderTooltip(info) {
 }
 
 function App() {
+  const [paths, setPaths] = React.useState();
   // TODO: Preprocess these data points into the format
   const [zoom, setZoom] = useState(13);
   const [hoverInfo, setHoverInfo] = useState({});
@@ -74,10 +76,17 @@ function App() {
     pitch: 0,
     bearing: 0,
   };
+  React.useEffect(() => {
+    // Get the train line paths
+    const getPaths = async () => {
+      await getPathData().then((response) => setPaths(response));
+    };
+    getPaths();
+  }, []);
 
   const layers = [
     new PathLayer({
-      data: pathData,
+      data: paths,
       getPath: (f) => f.path,
       getColor: (d) => d.color,
       getWidth: 10,
