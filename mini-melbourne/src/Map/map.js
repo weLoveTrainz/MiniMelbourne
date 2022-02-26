@@ -6,7 +6,7 @@ import Dialog, { cardType } from "../Train/TrainData/Dialog";
 import DeckGL from "@deck.gl/react";
 import { IconLayer, PathLayer } from "@deck.gl/layers";
 import stations from "./data/stations.json";
-import getPathData from './data/getPathData';
+import getPathData from "./data/getPathData";
 
 const MAPBOX_ACCESS_TOKEN =
   "pk.eyJ1IjoidGhlb3J2b2x0IiwiYSI6ImNreGQ3c3hoZTNkbjUyb3BtMHVnc3ZldGYifQ.r5r7g8XYCkOivBeapa9gSw";
@@ -34,10 +34,18 @@ export const pathData = [
 
 function renderTooltip(info) {
   if (info.y) {
-    console.log(info)
-    return (<div className="tooltip interactive" style={{left: info.x, top: info.y, position: "absolute"}}>
-      <Dialog title={info.object.LOCATION_NAME} cardType={cardType.STATION} />
-    </div>);
+    return (
+      <div
+        className="tooltip interactive"
+        style={{ left: info.x, top: info.y, position: "absolute" }}
+      >
+        <Dialog
+          title={info.object.LOCATION_NAME}
+          cardType={cardType.STATION}
+          occupancy={ `${Math.floor(Math.random() * 100) + 1}%` }
+        />
+      </div>
+    );  
   }
 }
 
@@ -60,7 +68,6 @@ function App() {
   };
 
   const expandTooltip = (info) => {
-    console.log(info)
     if (info) {
       setHoverInfo(info);
     } else {
@@ -115,7 +122,7 @@ function App() {
       },
       opacity: 0.8,
       onClick: expandTooltip,
-    })
+    }),
   ];
 
   return (
