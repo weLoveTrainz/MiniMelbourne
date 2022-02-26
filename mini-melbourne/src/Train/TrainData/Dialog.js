@@ -54,6 +54,8 @@ const useStyles = makeStyles({
   },
 });
 
+const testCapacities = [10, 20, 81, 60, 20];
+
 const Dialog = (props) => {
   const classes = useStyles();
   return (
@@ -117,7 +119,7 @@ const Dialog = (props) => {
               </Typography>
             </div>
           )}
-          <TrainCarriages />
+          <TrainCarriages carriageCapacities={testCapacities} />
         </CardContent>
       </Box>
     </Card>

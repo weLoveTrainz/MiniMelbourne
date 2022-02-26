@@ -1,9 +1,12 @@
 import zIndex from '@mui/material/styles/zIndex';
 
 var percentColors = [
-  { pct: 0.0, color: { r: 0xff, g: 0x00, b: 0 } },
-  { pct: 0.5, color: { r: 0xff, g: 0xff, b: 0 } },
-  { pct: 1.0, color: { r: 0x00, g: 0xff, b: 0 } },
+  { pct: 0.0, color: { r: 201, g: 234, b: 176 } },
+  { pct: 0.2, color: { r: 144, g: 190, b: 109 } },
+  { pct: 0.4, color: { r: 249, g: 199, b: 79 } },
+  { pct: 0.6, color: { r: 248, g: 150, b: 30 } },
+  { pct: 0.8, color: { r: 243, g: 114, b: 44 } },
+  { pct: 1.0, color: { r: 249, g: 65, b: 68 } },
 ];
 
 var getColorForPercentage = function (pct) {
@@ -28,9 +31,9 @@ var getColorForPercentage = function (pct) {
 };
 
 const Carriage = ({ percentage }) => {
-  const color = getColorForPercentage(percentage);
+  const color = getColorForPercentage(percentage / 100);
   const maxHeight = 40;
-  const width = 50;
+  const width = 40;
   return (
     <div
       style={{
@@ -59,6 +62,10 @@ const Carriage = ({ percentage }) => {
           bottom: 0,
         }}
       />
+      {/* TODO: Style this */}
+      <div
+        style={{ width: '100%', textAlign: 'center' }}
+      >{`${percentage}%`}</div>
     </div>
   );
 };
