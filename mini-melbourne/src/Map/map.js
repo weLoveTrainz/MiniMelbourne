@@ -85,8 +85,6 @@ export async function getPathData() {
       color: colours[name]
     })
   }
-
-  console.log(pathData)
 }
 
 function App() {
