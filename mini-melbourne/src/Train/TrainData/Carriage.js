@@ -1,4 +1,4 @@
-import zIndex from '@mui/material/styles/zIndex';
+import Typography from '@mui/material/Typography';
 
 var percentColors = [
   { pct: 0.0, color: { r: 201, g: 234, b: 176 } },
@@ -63,9 +63,12 @@ const Carriage = ({ percentage }) => {
         }}
       />
       {/* TODO: Style this */}
-      <div
-        style={{ width: '100%', textAlign: 'center' }}
-      >{`${percentage}%`}</div>
+      <div style={{ width: '100%', textAlign: 'center' }}></div>
+      <Typography variant={'caption'}>
+        <div
+          style={{ textAlign: 'center', width: '100%' }}
+        >{`${percentage}%`}</div>
+      </Typography>
     </div>
   );
 };
