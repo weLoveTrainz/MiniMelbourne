@@ -1,8 +1,8 @@
 import * as React from 'react';
-import Map, { Marker } from 'react-map-gl';
+import Map from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import DeckGL from '@deck.gl/react';
-import { LineLayer, PathLayer } from '@deck.gl/layers';
+import { PathLayer } from '@deck.gl/layers';
 import { StationMarkers } from './Stations';
 import Popup from '../Train/TrainData/Popup';
 
@@ -18,34 +18,10 @@ const INITIAL_VIEW_STATE = {
   bearing: 0,
 };
 
-const pathData = [
-  {
-    path: [
-      [144.966964346166, -37.8183051340585],
-      [144.967731536194, -37.8180840725787],
-      [144.967915434574, -37.8180061406911],
-      [144.968831710922, -37.8177335742904],
-      [144.970386306518, -37.8173818877091],
-      [144.971989018237, -37.8169318797019],
-    ],
-    name: 'Richmond - Millbrae',
-    color: [255, 0, 0],
-  },
-];
-
-// Data to be used by the LineLayer
-const data = [
-  {
-    sourcePosition: [144.966964346166, -37.8183051340585],
-    targetPosition: [144.971989018237, -37.8169318797019],
-  },
-];
-
 export const positionOrigin = [144.966964346166, -37.8183051340585];
 
-export const zigzag = [
+export const pathData = [
   {
-    // A-B-A
     path: [
       [144.966964346166, -37.8183051340585],
       [144.967731536194, -37.8180840725787],
@@ -61,9 +37,8 @@ export const zigzag = [
 
 function App() {
   const layers = [
-    new LineLayer({ id: 'line-layer', data }),
     new PathLayer({
-      data: zigzag,
+      data: pathData,
       getPath: (f) => f.path,
       getColor: (d) => d.color,
       getWidth: 10,
@@ -72,8 +47,6 @@ function App() {
     }),
   ];
 
-  console.log(zigzag);
-
   return (
     <DeckGL
       initialViewState={INITIAL_VIEW_STATE}
@@ -81,11 +54,7 @@ function App() {
       layers={layers}
     >
       <Map
-        initialViewState={{
-          longitude: 144.966964346166,
-          latitude: -37.8183051340585,
-          zoom: 14,
-        }}
+        initialViewState={INITIAL_VIEW_STATE}
         style={{ width: 600, height: 400 }}
         mapboxAccessToken={MAPBOX_ACCESS_TOKEN}
         mapStyle="mapbox://styles/theorvolt/ckxd802bwenhq14jmeevpfu3t"
