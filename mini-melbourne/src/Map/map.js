@@ -43,14 +43,6 @@ function App() {
   // TODO: Preprocess these data points into the format
   const [zoom, setZoom] = useState(13);
   const [hoverInfo, setHoverInfo] = useState({});
-  const [count, setCount] = useState(0);
-  const [trainPoint, setTrainPoint] = useState([
-    {
-      ID: 'train_id',
-      COORDINATES: [144.966964346166, -37.8183051340585],
-    },
-  ]);
-
   const [trainPoints, setTrainPoints] = useState({});
 
   const newPoints = stations.map((station) => {
@@ -94,18 +86,6 @@ function App() {
   React.useEffect(() => {
     const interval = setInterval(async () => {
       const data = await getTrainPointsData();
-      // const filtered = data.services.filter(
-      //   (trainPoint) => Math.abs(trainPoint.coords[0] - 144.9671) < 20
-      // );
-      // console.log(filtered);
-      setCount((prevCount) => (prevCount += 1));
-      console.log(data);
-      setTrainPoint([
-        {
-          ID: 'train_id',
-          COORDINATES: samplePathData.shape_file[count],
-        },
-      ]);
       setTrainPoints(data.services);
     }, 1000);
     return () => clearInterval(interval);
@@ -142,20 +122,6 @@ function App() {
       },
       opacity: 0.8,
       onClick: expandTooltip,
-    }),
-    new ScenegraphLayer({
-      id: 'scenegraph-layer',
-      data: trainPoint,
-      pickable: true,
-      scenegraph:
-        'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/BoxAnimated/glTF-Binary/BoxAnimated.glb',
-      getPosition: (d) => d.COORDINATES,
-      getOrientation: (d) => [0, Math.random() * 180, 90],
-      _animations: {
-        '*': { speed: 5 },
-      },
-      sizeScale: 250,
-      _lighting: 'pbr',
     }),
     new ScenegraphLayer({
       id: 'scenegraph-layer',
