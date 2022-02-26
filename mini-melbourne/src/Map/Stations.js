@@ -1,8 +1,9 @@
 import stations from './data/stations.json';
-import marker from './marker.png';
-import Map, { Marker } from 'react-map-gl';
+import { Marker } from 'react-map-gl';
 
-export const StationMarkers = () => {
+import Pin from './Pin';
+
+export const StationMarkers = (props) => {
   return (
     <>
       {stations.map((station) => {
@@ -11,8 +12,9 @@ export const StationMarkers = () => {
             longitude={station.stop_lon}
             latitude={station.stop_lat}
             anchor="bottom"
+            onClick={props.onClick}
           >
-            <img src={marker} />
+          <Pin onClick={() => props.setPopupInfo(station)} />
           </Marker>
         );
       })}

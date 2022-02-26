@@ -1,22 +1,17 @@
 import * as React from 'react';
-import Map from 'react-map-gl';
+import {useState} from 'react';
+import Map, {
+  Popup,
+  NavigationControl,
+  GeolocateControl
+} from 'react-map-gl';
+import {LineLayer} from '@deck.gl/layers';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import DeckGL from '@deck.gl/react';
-import { PathLayer } from '@deck.gl/layers';
 import { StationMarkers } from './Stations';
-import Popup from '../Train/TrainData/Popup';
+import Dialog, { cardType } from '../Train/TrainData/Dialog';
 
 const MAPBOX_ACCESS_TOKEN =
   'pk.eyJ1IjoidGhlb3J2b2x0IiwiYSI6ImNreGQ3c3hoZTNkbjUyb3BtMHVnc3ZldGYifQ.r5r7g8XYCkOivBeapa9gSw';
-
-// Viewport settings
-const INITIAL_VIEW_STATE = {
-  longitude: 144.966964346166,
-  latitude: -37.8183051340585,
-  zoom: 13,
-  pitch: 0,
-  bearing: 0,
-};
 
 export const positionOrigin = [144.966964346166, -37.8183051340585];
 
@@ -36,33 +31,50 @@ export const pathData = [
 ];
 
 function App() {
-  const layers = [
-    new PathLayer({
-      data: pathData,
-      getPath: (f) => f.path,
-      getColor: (d) => d.color,
-      getWidth: 10,
-      widthMinPixels: 1,
-      pickable: true,
-    }),
-  ];
+
+  const layers = [new LineLayer({ id: 'line-layer', pathData })];
+  const [popupInfo, setPopupInfo] = useState(null);
+  const [zoom, setZoom] = useState(13);
+
+  // Viewport settings
+  const INITIAL_VIEW_STATE = {
+    longitude: 144.966964346166,
+    latitude: -37.8183051340585,
+    zoom: zoom,
+    pitch: 0,
+    bearing: 0,
+  };
 
   return (
-    <DeckGL
-      initialViewState={INITIAL_VIEW_STATE}
-      controller={true}
-      layers={layers}
-    >
+    // <DeckGL
+    //   initialViewState={INITIAL_VIEW_STATE}
+    //   controller={{dragPan: false}}
+    //   layers={layers} 
+    // >
+    <>
       <Map
         initialViewState={INITIAL_VIEW_STATE}
         style={{ width: 600, height: 400 }}
         mapboxAccessToken={MAPBOX_ACCESS_TOKEN}
         mapStyle="mapbox://styles/theorvolt/ckxd802bwenhq14jmeevpfu3t"
       >
-        <StationMarkers />
+        <NavigationControl position="top-left"  onViewportChange={(viewport) => setZoom(viewport)}/>
+        <GeolocateControl position="top-left" />
+        <StationMarkers setPopupInfo={setPopupInfo}/>
+        <StationMarkers setPopupInfo={setPopupInfo}/>
+        {popupInfo && (
+          <Popup
+            anchor="bottom"
+            longitude={Number(popupInfo.stop_lon)}
+            latitude={Number(popupInfo.stop_lat)}
+            closeOnClick={false}
+            onClose={() => setPopupInfo(null)}
+          >
+            <Dialog title={popupInfo.stop_name} cardType={cardType.STATION}/>
+          </Popup>
+        )}
       </Map>
-      <Popup nextStation="Flinders Street" etaTime="7:30pm" occupancy="Light" />
-    </DeckGL>
+    </>
   );
 }
 
