@@ -89,22 +89,7 @@ const Dialog = (props) => {
                 color="text.secondary"
                 sx={{ lineHeight: 1.5 }}
               >
-                <span className={classes.subtitle}>Next Station:</span>{" "}
-                {props.nextStation}
-              </Typography>
-              <Typography
-                variant="body2"
-                color="text.secondary"
-                sx={{ lineHeight: 1.5 }}
-              >
-                <span className={classes.subtitle}>ETA:</span> {props.etaTime}
-              </Typography>
-              <Typography
-                variant="body2"
-                color="text.secondary"
-                sx={{ lineHeight: 1.5 }}
-              >
-                <span className={classes.subtitle}>Train Occupancy:</span>{" "}
+                <span className={classes.subtitle}>Parking Occupancy:</span>{" "}
                 {props.occupancy}
               </Typography>
             </div>

@@ -47,6 +47,5 @@ export default async function getPathData() {
       });
     })
   ).then(() => pathData);
-  console.log(data);
   return data;
 }

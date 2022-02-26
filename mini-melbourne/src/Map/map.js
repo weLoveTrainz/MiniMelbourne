@@ -20,13 +20,16 @@ export const positionOrigin = [144.966964346166, -37.8183051340585];
 
 function renderTooltip(info) {
   if (info.y) {
-    console.log(info);
     return (
       <div
         className="tooltip interactive"
         style={{ left: info.x, top: info.y, position: 'absolute' }}
       >
-        <Dialog title={info.object.LOCATION_NAME} cardType={cardType.STATION} />
+        <Dialog
+          title={info.object.LOCATION_NAME}
+          cardType={cardType.STATION}
+          occupancy={`${Math.floor(Math.random() * 100) + 1}%`}
+        />
       </div>
     );
   }
@@ -58,7 +61,6 @@ function App() {
   };
 
   const expandTooltip = (info) => {
-    console.log(info);
     if (info) {
       setHoverInfo(info);
     } else {
