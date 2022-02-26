@@ -101,6 +101,7 @@ function App() {
       initialViewState={INITIAL_VIEW_STATE}
       controller={true}
       layers={layers}
+      pickingRadius={20}
     >
       <Map
         initialViewState={INITIAL_VIEW_STATE}
