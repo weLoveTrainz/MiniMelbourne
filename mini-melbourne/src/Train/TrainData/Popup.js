@@ -5,7 +5,14 @@ import { makeStyles } from "@mui/styles";
 import Typography from "@mui/material/Typography";
 import CardMedia from "@mui/material/CardMedia";
 import trainIcon from "../../assets/Train.png";
+import trainStationIcon from "../../assets/TrainStation.png";
 import Box from "@mui/material/Box";
+
+
+export const cardType = { 
+  TRAIN: 'TRAIN', 
+  STATION: 'STATION'
+}
 
 const useStyles = makeStyles({
   root: {
@@ -62,7 +69,7 @@ const Popup = (props) => {
       <CardMedia
         component="img"
         sx={{ width: 56, marginBottom: 5, marginRight: 2 }}
-        image={trainIcon}
+        image={props.type === cardType.TRAIN ? trainIcon : trainStationIcon}
         alt="Live from space album cover"
       />
       <Box sx={{ display: "flex", flexDirection: "column" }}>
