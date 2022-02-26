@@ -27,7 +27,7 @@ const TrainCarriages = ({ carriageCapacities }) => {
             <svg
               viewBox="0 0 48 48"
               xmlns="http://www.w3.org/2000/svg"
-              style={{ fill: '#ADD8E6' }}
+              style={{ fill: '#C9D5DE' }}
             >
               <circle cx="24" cy="24" r="12" />
             </svg>
