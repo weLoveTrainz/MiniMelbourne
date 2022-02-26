@@ -55,11 +55,15 @@ const iconData = [
 
 function App() {
   console.log(points);
+  // TODO: Preprocess these data points into the format
   const newPoints = stations.map((station) => {
     return {
       LOCATION_NAME: station.stop_name,
+      COORDINATES: [parseFloat(station.stop_lon), parseFloat(station.stop_lat)],
     };
   });
+
+  console.log(newPoints);
   const layers = [
     new PathLayer({
       data: pathData,
@@ -71,15 +75,24 @@ function App() {
     }),
     new IconLayer({
       id: 'icon-lnglat',
-      data: points,
+      data: newPoints,
       iconAtlas:
         'https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/icon-atlas.png',
       iconMapping,
-      sizeScale: 12,
-      getPosition: (d) => d.COORDINATES,
+      sizeScale: 20,
+      getPosition: (d) => {
+        console.log(d);
+        return d.COORDINATES;
+      },
       getColor: (d) => [64, 64, 72],
-      getIcon: (d) => (d.PLACEMENT === 'SW' ? 'marker' : 'marker-warning'),
-      getSize: (d) => (d.RACKS > 2 ? 2 : 1),
+      getIcon: (d) => {
+        // return  (d.PLACEMENT === 'SW' ? 'marker' : 'marker-warning')
+        return 'marker';
+      },
+      getSize: (d) => {
+        // return (d.RACKS > 2 ? 2 : 1)
+        return 1;
+      },
       opacity: 0.8,
     }),
   ];
@@ -97,9 +110,7 @@ function App() {
         mapStyle="mapbox://styles/theorvolt/ckxd802bwenhq14jmeevpfu3t"
         dragPan={false}
         cursor={'crosshair'}
-      >
-        <StationMarkers />
-      </Map>
+      ></Map>
       <Popup nextStation="Flinders Street" etaTime="7:30pm" occupancy="Light" />
     </DeckGL>
   );
