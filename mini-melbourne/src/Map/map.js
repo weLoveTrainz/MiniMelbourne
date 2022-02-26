@@ -44,33 +44,6 @@ export const positionOrigin = [144.966964346166, -37.8183051340585];
 
 export const zigzag = [
   {
-    // Big zigzag
-    path: new Array(12)
-      .fill(0)
-      .map((d, i) => [
-        positionOrigin[0] + i * i * 0.001,
-        positionOrigin[1] + (Math.cos(i * Math.PI) * 0.2) / (i + 4),
-      ]),
-  },
-  {
-    // Tiny zigzag
-    path: new Array(12)
-      .fill(0)
-      .map((d, i) => [
-        positionOrigin[0] - 0.001 - i * i * 1e-5,
-        positionOrigin[1] + (Math.cos(i * Math.PI) * 2e-3) / (i + 4),
-      ]),
-  },
-  {
-    // Tiny circle
-    path: new Array(25)
-      .fill(0)
-      .map((d, i) => [
-        positionOrigin[0] + Math.cos((i / 12) * Math.PI) * 2e-5,
-        positionOrigin[1] + Math.sin((i / 12) * Math.PI) * 2e-5,
-      ]),
-  },
-  {
     // A-B-A
     path: [
       [144.966964346166, -37.8183051340585],
