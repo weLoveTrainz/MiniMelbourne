@@ -7,7 +7,6 @@ import CardMedia from '@mui/material/CardMedia';
 import trainIcon from '../../assets/Train.png';
 import trainStationIcon from '../../assets/TrainStation.png';
 import Box from '@mui/material/Box';
-import Carriage from './Carriage';
 import TrainCarriages from './TrainCarriages';
 
 export const cardType = {
@@ -98,7 +97,8 @@ const Dialog = (props) => {
               </Typography>
             </div>
           )}
-
+          {console.log(props.nextStation)}
+          {console.log(props.type)}
           {props.cardType === cardType.TRAIN && (
             <div>
               <Typography
@@ -106,16 +106,23 @@ const Dialog = (props) => {
                 color="text.secondary"
                 sx={{ lineHeight: 1.5 }}
               >
-                <span className={classes.subtitle}>Car Park Occupancy:</span>{' '}
-                {props.carParkOccupancy}
+                <span className={classes.subtitle}>Next Station:</span>{' '}
+                {props.nextStation}
               </Typography>
               <Typography
                 variant="body2"
                 color="text.secondary"
                 sx={{ lineHeight: 1.5 }}
               >
-                <span className={classes.subtitle}>Expected Occupancy:</span>{' '}
-                {props.carParkOccupancy}
+                <span className={classes.subtitle}>ETA:</span> {props.eta}
+              </Typography>
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{ lineHeight: 1.5 }}
+              >
+                <span className={classes.trainOccupancy}>Train Occupancy:</span>{' '}
+                {props.eta}
               </Typography>
             </div>
           )}
