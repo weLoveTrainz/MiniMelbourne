@@ -12,7 +12,6 @@ export const StationMarkers = (props) => {
             longitude={station.stop_lon}
             latitude={station.stop_lat}
             anchor="bottom"
-            onClick={props.onClick}
           >
           <Pin onClick={() => props.setPopupInfo(station)} />
           </Marker>

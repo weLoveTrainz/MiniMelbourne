@@ -4,7 +4,7 @@ export const theme = createTheme({
   typography: {
     fontFamily: "Helvetica Neue",
   h1: {
-      fontWeight: 'bold',
+      fontWeight: '400',
       fontSize: '87px',
   },
   body1: {
@@ -16,8 +16,8 @@ export const theme = createTheme({
       fontSize: '65px',
   }, 
   h5: { 
-    fontWeight: '600',
-    fontSize: '20px',
+    fontWeight: '400',
+    fontSize: '15px',
   }
 }
 });
