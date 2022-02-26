@@ -3,16 +3,11 @@ import Map from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import DeckGL from '@deck.gl/react';
 import { IconLayer, PathLayer } from '@deck.gl/layers';
-import { StationMarkers } from './Stations';
 import Popup from '../Train/TrainData/Popup';
-import points from './data/sf.bike.parking.json';
 import stations from './data/stations.json';
-// import ICON_ATLAS from './data/icon-atlas.png';
 
 const MAPBOX_ACCESS_TOKEN =
   'pk.eyJ1IjoidGhlb3J2b2x0IiwiYSI6ImNreGQ3c3hoZTNkbjUyb3BtMHVnc3ZldGYifQ.r5r7g8XYCkOivBeapa9gSw';
-
-const ICON_ATLAS = './data/icon-atlas.png';
 
 // Viewport settings
 const INITIAL_VIEW_STATE = {
@@ -54,7 +49,6 @@ const iconData = [
 ];
 
 function App() {
-  console.log(points);
   // TODO: Preprocess these data points into the format
   const newPoints = stations.map((station) => {
     return {
