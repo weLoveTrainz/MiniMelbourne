@@ -23,23 +23,6 @@ export const iconMapping = {
 
 export const positionOrigin = [144.966964346166, -37.8183051340585];
 
-function renderTooltip(info) {
-  if (info.y) {
-    return (
-      <div
-        className="tooltip interactive"
-        style={{ left: info.x, top: info.y, position: 'absolute' }}
-      >
-        <Dialog
-          title={info.object.LOCATION_NAME}
-          cardType={cardType.STATION}
-          occupancy={`${Math.floor(Math.random() * 100) + 1}%`}
-        />
-      </div>
-    );
-  }
-}
-
 function App() {
   const [paths, setPaths] = React.useState();
   // TODO: Preprocess these data points into the format
@@ -52,25 +35,50 @@ function App() {
   const [trainPoints, setTrainPoints] = useState({});
   const [trainName, setTrainName] = useState({});
 
+  const hideTooltip = () => {
+    setHoverInfo({});
+    setTrainInfo({});
+  };
   // var trainData = new Map();
 
-  function renderTrainInfo(info) {
-    if (info.y && nextStop) {
+  function renderTooltip(info) {
+    if (info.y) {
       return (
         <div
           className="tooltip interactive"
           style={{ left: info.x, top: info.y, position: 'absolute' }}
         >
           <Dialog
-            title={trainName.line_name}
-            nextStation={nextStop.stop.name}
-            eta={nextStop.arrival}
-            occupancy={`${'Heavy'}%`}
-            cardType={cardType.TRAIN}
+            title={info.object.LOCATION_NAME}
+            cardType={cardType.STATION}
+            occupancy={`${Math.floor(Math.random() * 100) + 1}%`}
+            closeDialog={hideTooltip}
           />
         </div>
       );
     }
+  }
+
+  function renderTrainInfo(info) {
+    return (
+      <>
+        {info.y && nextStop && (
+          <div
+            className="tooltip interactive"
+            style={{ left: info.x, top: info.y, position: 'absolute' }}
+          >
+            <Dialog
+              title={trainName.line_name}
+              nextStation={nextStop.stop.name}
+              eta={nextStop.arrival}
+              occupancy={`${'Heavy'}%`}
+              cardType={cardType.TRAIN}
+              closeDialog={hideTooltip}
+            />
+          </div>
+        )}
+      </>
+    );
   }
 
   const [trainPoint, setTrainPoint] = useState([
@@ -88,11 +96,6 @@ function App() {
       COORDINATES: [parseFloat(station.stop_lon), parseFloat(station.stop_lat)],
     };
   });
-
-  const hideTooltip = () => {
-    setHoverInfo({});
-    setTrainInfo({});
-  };
 
   const expandTooltip = (info) => {
     if (info) {

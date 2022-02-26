@@ -8,6 +8,8 @@ import trainIcon from '../../assets/Train.png';
 import trainStationIcon from '../../assets/TrainStation.png';
 import Box from '@mui/material/Box';
 import TrainCarriages from './TrainCarriages';
+import IconButton from '@mui/material/IconButton';
+import CancelRoundedIcon from '@mui/icons-material/CancelRounded';
 
 export const cardType = {
   TRAIN: 'TRAIN',
@@ -66,6 +68,18 @@ const Dialog = (props) => {
         padding: 4,
       }}
     >
+      <div style={{ position: 'absolute', top: 4, right: 4 }}>
+        <IconButton
+          onClick={() => {
+            console.log(props);
+            console.log('hi');
+            console.log(props.closeDialog);
+            props.closeDialog();
+          }}
+        >
+          <CancelRoundedIcon />
+        </IconButton>
+      </div>
       <div
         style={{
           display: 'flex',
