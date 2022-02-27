@@ -15,12 +15,15 @@ import Fuse from 'fuse.js';
 import Typography from '@mui/material/Typography';
 import { Divider } from '@mui/material';
 import getTripData from './data/getTripData';
+import Circle from '../assets/Circle.glb'
+import Train from '../assets/AWT-Train.png'
 
 export const MAPBOX_ACCESS_TOKEN =
   'pk.eyJ1IjoidGhlb3J2b2x0IiwiYSI6ImNreGQ3c3hoZTNkbjUyb3BtMHVnc3ZldGYifQ.r5r7g8XYCkOivBeapa9gSw';
 
 export const iconMapping = {
-  marker: { x: 0, y: 0, width: 128, height: 128, mask: true },
+  marker: { x: 0, y: 0, width: 200, height: 200
+    , mask: false, anchorY: 200},
 };
 
 export const positionOrigin = [144.966964346166, -37.8183051340585];
@@ -164,6 +167,7 @@ function App() {
   React.useEffect(() => {
     const interval = setInterval(async () => {
       const data = await getTrainPointsData();
+      console.log(data)
       const new_data = []
       data.services.map((obj) => new_data.push({
         'coords': obj.coords,
@@ -189,8 +193,7 @@ function App() {
       id: 'icon-lnglat',
       pickable: true,
       data: newPoints,
-      iconAtlas:
-        'https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/icon-atlas.png',
+      iconAtlas: Train,
       iconMapping,
       sizeScale: 20,
       getPosition: (d) => {
@@ -202,8 +205,7 @@ function App() {
         return 'marker';
       },
       getSize: (d) => {
-        // return (d.RACKS > 2 ? 2 : 1)
-        return 1;
+        return 2;
       },
       opacity: 0.8,
       onClick: expandTooltip,
@@ -212,14 +214,16 @@ function App() {
       id: 'scenegraph-layer',
       data: trainPoints ?? [],
       pickable: true,
-      scenegraph:
-        'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/BoxAnimated/glTF-Binary/BoxAnimated.glb',
+      scenegraph: Circle,
       getPosition: (d) => d.coords,
-      getOrientation: (d) => [0, Math.random() * 180, 90],
+      getOrientation: (d) => [0, 180, 90],
       _animations: {
         '*': { speed: 5 },
       },
-      sizeScale: 60,
+      getSize: (d) => {
+        return 8;
+      },
+      sizeScale: 40,
       _lighting: 'pbr',
       onClick: showTrainInfo,
     }),
