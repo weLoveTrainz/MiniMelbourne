@@ -38,7 +38,9 @@ export default async function getPathData() {
   let pathData = [];
   const data = await Promise.all(
     Object.entries(lines).map(async ([name, id]) => {
-      const data = await fetch(`http://118.139.86.189:8080/shape/${id}`);
+      const data = await fetch(
+        `${process.env.REACT_APP_BACKEND_API_URL}/shape/${id}`
+      );
       const json = await data.json();
       pathData.push({
         path: json.shape_file,
