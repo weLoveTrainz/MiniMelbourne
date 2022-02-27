@@ -259,7 +259,7 @@ function App() {
         initialViewState={INITIAL_VIEW_STATE}
         style={{ width: 600, height: 400 }}
         mapboxAccessToken={MAPBOX_ACCESS_TOKEN}
-        mapStyle="mapbox://styles/mapbox/streets-v9"
+        mapStyle="mapbox://styles/theorvolt/ckxd802bwenhq14jmeevpfu3t"
         dragPan={false}
         cursor={'crosshair'}
       />
