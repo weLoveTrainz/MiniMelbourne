@@ -13,7 +13,6 @@ import Frankston from './1973.T5.2-FKN-F-mjp-1.12.R.json';
 import Werribee from './2.UT.2-WBE-L-mjp-1.7.H.json';
 import Williamstown from './3242.UQ.2-WMN-K-mjp-1.1.H.json';
 import Sandringham from './1952.T5.2-SDM-E-mjp-1.2.R.json';
-import { ThemeContext } from '@emotion/react';
 
 const lines = {
   Lilydale: '1033.T5.2-LIL-C-mjp-1.35.R',
@@ -56,10 +55,10 @@ export const trip_ids = [
 ];
 
 // Minutes
-const tripTime = 45;
 
 export const getPathPointByTripId = (trip_id, counter) => {
   // const arrayLength = 100;
+  console.log(counter);
   const arrayLength = getPathFromTripId(trip_id)['shape_file'].length;
   const currTime = get24HourTimeInSeconds();
   console.log(currTime);
