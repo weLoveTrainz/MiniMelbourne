@@ -13,6 +13,11 @@ import Carriage from '../Train/TrainData/Carriage';
 import getTrainPointsData from './data/getTrainPointsData';
 import getNextStation from '../Train/TrainData/GetNextStation';
 import getTrainLine from '../Train/TrainData/GetTrainLine';
+import IconButton from '@mui/material/IconButton';
+import SearchIcon from '@mui/icons-material/Search';
+import Fuse from 'fuse.js';
+import Typography from '@mui/material/Typography';
+import { Divider } from '@mui/material';
 
 export const MAPBOX_ACCESS_TOKEN =
   'pk.eyJ1IjoidGhlb3J2b2x0IiwiYSI6ImNreGQ3c3hoZTNkbjUyb3BtMHVnc3ZldGYifQ.r5r7g8XYCkOivBeapa9gSw';
@@ -22,6 +27,12 @@ export const iconMapping = {
 };
 
 export const positionOrigin = [144.966964346166, -37.8183051340585];
+
+const options = {
+  keys: ['stop_name'],
+};
+
+const fuse = new Fuse(stations, options);
 
 function App() {
   const [paths, setPaths] = React.useState();
@@ -34,6 +45,42 @@ function App() {
   const [nextStop, setNextStop] = useState();
   const [trainPoints, setTrainPoints] = useState({});
   const [trainName, setTrainName] = useState({});
+  const [searchQuery, setSearchContents] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+
+  // Viewport settings
+  const INITIAL_VIEW_STATE = {
+    longitude: 144.966964346166,
+    latitude: -37.8183051340585,
+    zoom: zoom,
+    pitch: 0,
+    bearing: 0,
+  };
+
+  const [viewState, setViewState] = useState({
+    longitude: 144.966964346166,
+    latitude: -37.8183051340585,
+    zoom: zoom,
+    pitch: 0,
+    bearing: 0,
+  });
+
+  const inputHandler = (e) => {
+    setSearchContents(e.target.value);
+    setSearchResults(fuse.search(searchQuery).slice(0, 5));
+  };
+
+  const onClickSearchResultHandler = (station) => {
+    setViewState((currViewState) => {
+      return {
+        ...currViewState,
+        longitude: parseFloat(station.stop_lon),
+        latitude: parseFloat(station.stop_lat),
+      };
+    });
+    setSearchContents('');
+    setSearchResults([]);
+  };
 
   const hideTooltip = () => {
     setHoverInfo({});
@@ -112,15 +159,6 @@ function App() {
     } else {
       setTrainInfo({});
     }
-  };
-
-  // Viewport settings
-  const INITIAL_VIEW_STATE = {
-    longitude: 144.966964346166,
-    latitude: -37.8183051340585,
-    zoom: zoom,
-    pitch: 0,
-    bearing: 0,
   };
 
   // Train Paths
@@ -224,11 +262,16 @@ function App() {
 
   return (
     <DeckGL
-      initialViewState={INITIAL_VIEW_STATE}
+      viewState={viewState}
+      onViewStateChange={(viewState) => {
+        console.log(viewState);
+        // TODO: extract this to a handler
+        setViewState(viewState.viewState);
+        hideTooltip();
+      }}
       controller={true}
       layers={layers}
       onClick={() => {}}
-      onViewStateChange={hideTooltip}
       pickingRadius={20}
     >
       <Map
@@ -238,14 +281,85 @@ function App() {
         mapStyle="mapbox://styles/theorvolt/ckxd802bwenhq14jmeevpfu3t"
         dragPan={false}
         cursor={'crosshair'}
-      >
-        <NavigationControl
-          position="top-left"
-          onViewportChange={(viewport) => setZoom(viewport)}
-        />
-      </Map>
+      />
       {renderTooltip(hoverInfo)}
       {renderTrainInfo(trainInfo)}
+      <div
+        style={{
+          position: 'fixed',
+          top: '16px',
+          left: '8px',
+        }}
+      >
+        <div
+          style={{
+            boxShadow:
+              '0px 0px 2px rgba(0, 0, 0, 0.12), 0px 20px 20px rgba(0, 0, 0, 0.08)',
+            border: 'solid 2px white',
+            borderRadius: 32,
+            backgroundColor: 'white',
+            paddingRight: 16,
+            marginBottom: 4,
+          }}
+        >
+          <IconButton
+            onClick={() => {}}
+            style={{
+              border: 'solid 2px white',
+              backgroundColor: 'white',
+              borderRadius: 32,
+              cursor: 'pointer',
+            }}
+          >
+            <SearchIcon />
+          </IconButton>
+          {/* TODO: Style the text input */}
+          <input
+            type="text"
+            style={{
+              border: 'none',
+              borderWidth: 0,
+              outlineStyle: 'none',
+            }}
+            onChange={inputHandler}
+            value={searchQuery}
+            placeholder="Search for a station"
+          />
+        </div>
+        {searchQuery &&
+          searchQuery.length > 0 &&
+          searchResults &&
+          searchResults.length > 0 && (
+            <div
+              style={{
+                boxShadow:
+                  '0px 0px 2px rgba(0, 0, 0, 0.12), 0px 20px 20px rgba(0, 0, 0, 0.08)',
+                border: 'solid 2px white',
+                borderRadius: 32,
+                backgroundColor: 'white',
+                paddingRight: 16,
+                maxHeight: 400,
+                padding: 12,
+                cursor: 'pointer',
+              }}
+            >
+              {searchResults.map((result) => {
+                return (
+                  <div key={result.item.stop_id}>
+                    <div
+                      onClick={() => onClickSearchResultHandler(result.item)}
+                    >
+                      <Typography variant="h5">
+                        {result.item.stop_name}
+                      </Typography>
+                    </div>
+                    <Divider />
+                  </div>
+                );
+              })}
+            </div>
+          )}
+      </div>
     </DeckGL>
   );
 }
