@@ -30,7 +30,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "npx eslint --fix ."
   },
   "eslintConfig": {
     "extends": [
@@ -54,6 +55,8 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^3.2.3"
+    "gh-pages": "^3.2.3",
+    "eslint": "^8.10.0",
+    "eslint-plugin-react": "^7.29.2"
   }
 }
