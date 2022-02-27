@@ -143,7 +143,7 @@ const Dialog = (props) => {
                   <span className={classes.trainOccupancy}>
                     Train Occupancy:
                   </span>{' '}
-                  {props.eta}
+                  {props.occupancy}
                 </Typography>
                   {/* TODO: Make this conditional depending on train type */}
                  <TrainCarriages carriageCapacities={testCapacities} />

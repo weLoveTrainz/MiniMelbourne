@@ -16,6 +16,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import Fuse from 'fuse.js';
 import Typography from '@mui/material/Typography';
 import { Divider } from '@mui/material';
+import getTripData from './data/getTripData';
 
 export const MAPBOX_ACCESS_TOKEN =
   'pk.eyJ1IjoidGhlb3J2b2x0IiwiYSI6ImNreGQ3c3hoZTNkbjUyb3BtMHVnc3ZldGYifQ.r5r7g8XYCkOivBeapa9gSw';
@@ -42,6 +43,7 @@ function App() {
   const [nextStop, setNextStop] = useState();
   const [trainPoints, setTrainPoints] = useState({});
   const [trainName, setTrainName] = useState({});
+  const [nextStations, setNextStations] = useState({});
   const [searchQuery, setSearchContents] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
@@ -105,24 +107,21 @@ function App() {
 
   function renderTrainInfo(info) {
     return (
-      <>
-        {info.y && nextStop && (
+        info.object && info.object.data && info.object.data.data && info.y && (
           <div
             className="tooltip interactive"
             style={{ left: info.x, top: info.y, position: 'absolute' }}
-            key={trainName.line_name}
           >
             <Dialog
               title={trainName.line_name}
-              nextStation={nextStop.stop.name}
-              eta={nextStop.arrival}
-              occupancy={`${'Heavy'}%`}
+              nextStation={info.object.data.data.stop ?  info.object.data.data.stop.name : 'Trip Completed'}
+              eta={info.object.data.data ? info.object.data.data.arrival : 'Trip Completed'}
+              occupancy={`${'Heavy'}`}
               cardType={cardType.TRAIN}
               closeDialog={hideTooltip}
             />
           </div>
-        )}
-      </>
+        )
     );
   }
 
@@ -143,7 +142,6 @@ function App() {
   };
 
   const showTrainInfo = (info) => {
-    console.log(info);
     if (info) {
       setTrainInfo(info);
     } else {
@@ -159,22 +157,17 @@ function App() {
     };
     getPaths();
 
-    const nextStation = async (trip_id) => {
-      getNextStation(trip_id).then((res) => {
-        setNextStop(res);
-      });
-    };
+    // const getTripId = async (trip_id) => {
+    //   getTrainLine(trip_id).then((res) => {
+    //     setTrainName(res);
+    //   });
+    // };
+    // getTripId('379.T2.2-BEL-B-mjp-1.26.R');
 
-    const getTripId = async (trip_id) => {
-      getTrainLine(trip_id).then((res) => {
-        setTrainName(res);
-      });
+    const getNextStationData = async () => {
+      await getTripData().then((response) => {setNextStations(response)});
     };
-    getTripId('379.T2.2-BEL-B-mjp-1.26.R');
-
-    // For each train (id), call getNextStation
-    // nextStation2();
-    nextStation('379.T2.2-BEL-B-mjp-1.26.R');
+    getNextStationData();
   }, []);
 
   // periodic fetch and display
@@ -182,7 +175,14 @@ function App() {
   React.useEffect(() => {
     const interval = setInterval(async () => {
       const data = await getTrainPointsData();
-      setTrainPoints(data.services);
+      const new_data = []
+      data.services.map((obj) => new_data.push({
+        'coords': obj.coords,
+        'trip_id': obj.trip_id,
+        'start_time': obj.start_time,
+        'data': nextStations.filter(stop => stop.tripId === obj.trip_id)[0]
+      }))
+      setTrainPoints(new_data);
     }, 1000);
     return () => clearInterval(interval);
   });
