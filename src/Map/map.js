@@ -9,8 +9,6 @@ import stations from './data/stations.json';
 import getPathData from './data/getPathData';
 import { ScenegraphLayer } from '@deck.gl/mesh-layers';
 import getTrainPointsData from './data/getTrainPointsData';
-import getNextStation from '../Train/TrainData/GetNextStation';
-import getTrainLine from '../Train/TrainData/GetTrainLine';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import Fuse from 'fuse.js';
@@ -36,13 +34,11 @@ const fuse = new Fuse(stations, options);
 function App() {
   const [paths, setPaths] = React.useState();
   // TODO: Preprocess these data points into the format
-  const [zoom] = useState(13);
+  const [zoom] = useState(15);
   const [hoverInfo, setHoverInfo] = useState({});
   const [trainInfo, setTrainInfo] = useState({});
   // train data
-  const [nextStop, setNextStop] = useState();
   const [trainPoints, setTrainPoints] = useState({});
-  const [trainName, setTrainName] = useState({});
   const [nextStations, setNextStations] = useState({});
   const [searchQuery, setSearchContents] = useState('');
   const [searchResults, setSearchResults] = useState([]);
@@ -60,8 +56,8 @@ function App() {
     longitude: 144.966964346166,
     latitude: -37.8183051340585,
     zoom: zoom,
-    pitch: 0,
-    bearing: 0,
+    pitch: 100,
+    bearing: -20,
   });
 
   const inputHandler = (e) => {
@@ -113,7 +109,7 @@ function App() {
             style={{ left: info.x, top: info.y, position: 'absolute' }}
           >
             <Dialog
-              title={trainName.line_name}
+              title={info.object.data.trainName}
               nextStation={info.object.data.data.stop ?  info.object.data.data.stop.name : 'Trip Completed'}
               eta={info.object.data.data ? info.object.data.data.arrival : 'Trip Completed'}
               occupancy={`${'Heavy'}`}
@@ -157,13 +153,6 @@ function App() {
     };
     getPaths();
 
-    // const getTripId = async (trip_id) => {
-    //   getTrainLine(trip_id).then((res) => {
-    //     setTrainName(res);
-    //   });
-    // };
-    // getTripId('379.T2.2-BEL-B-mjp-1.26.R');
-
     const getNextStationData = async () => {
       await getTripData().then((response) => {setNextStations(response)});
     };
@@ -192,7 +181,7 @@ function App() {
       data: paths,
       getPath: (f) => f.path,
       getColor: (d) => d.color,
-      getWidth: 10,
+      getWidth: 20,
       widthMinPixels: 1,
       pickable: true,
     }),
@@ -230,7 +219,7 @@ function App() {
       _animations: {
         '*': { speed: 5 },
       },
-      sizeScale: 250,
+      sizeScale: 60,
       _lighting: 'pbr',
       onClick: showTrainInfo,
     }),
@@ -240,7 +229,6 @@ function App() {
     <DeckGL
       viewState={viewState}
       onViewStateChange={(viewState) => {
-        console.log(viewState);
         // TODO: extract this to a handler
         setViewState(viewState.viewState);
         hideTooltip();

@@ -1,5 +1,7 @@
+import getTrainLine from '../../Train/TrainData/GetTrainLine'
+
 async function getData() {
-    const data = await fetch(`http://118.139.86.189:8080/est_realtime`);
+    const data = await fetch(`${process.env.REACT_APP_BACKEND_API_URL}/est_realtime`);
     const json = await data.json();
     return json;
   }
@@ -17,10 +19,12 @@ async function getData() {
   
       const data = await Promise.all(
           tripIds.map(async (id) => {
-          const data = await fetch(`http://118.139.86.189:8080/next_station/${id}`);
+          const data = await fetch(`${process.env.REACT_APP_BACKEND_API_URL}/next_station/${id}`);
+          const trainNameData = await getTrainLine(id);
           const json = await data.json();
           returnData.push({
             tripId: id, 
+            trainName: trainNameData.line_name,
             data: json
           });
         })
