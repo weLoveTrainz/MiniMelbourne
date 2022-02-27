@@ -16,6 +16,11 @@ import SearchIcon from '@mui/icons-material/Search';
 import Fuse from 'fuse.js';
 import Typography from '@mui/material/Typography';
 import { Divider } from '@mui/material';
+import mapboxgl from 'mapbox-gl'; // This is a dependency of react-map-gl even if you didn't explicitly install it
+// eslint-disable-next-line import/no-webpack-loader-syntax
+mapboxgl.workerClass =
+  // eslint-disable-next-line import/no-webpack-loader-syntax
+  require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
 
 export const MAPBOX_ACCESS_TOKEN =
   'pk.eyJ1IjoidGhlb3J2b2x0IiwiYSI6ImNreGQ3c3hoZTNkbjUyb3BtMHVnc3ZldGYifQ.r5r7g8XYCkOivBeapa9gSw';
