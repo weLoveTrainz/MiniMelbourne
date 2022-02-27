@@ -118,7 +118,7 @@ function App() {
             style={{ left: info.x, top: info.y, position: 'absolute' }}
           >
             <Dialog
-              title={info.object.data.trainName}
+              title={info.object.data && info.object.data.trainName}
               nextStation={info.object.data.data.stop ?  info.object.data.data.stop.name : 'Trip Completed'}
               eta={info.object.data.data ? info.object.data.data.arrival : 'Trip Completed'}
               occupancy={`${'Heavy'}`}
@@ -175,6 +175,7 @@ function App() {
       const data = await getTrainPointsData();
       console.log(data)
       const new_data = []
+      console.log(nextStations)
       data.services.map((obj) => new_data.push({
         'coords': obj.coords,
         'trip_id': obj.trip_id,
