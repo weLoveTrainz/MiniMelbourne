@@ -38,7 +38,6 @@ function App() {
   const [zoom] = useState(13);
   const [hoverInfo, setHoverInfo] = useState({});
   const [trainInfo, setTrainInfo] = useState({});
-  const [count, setCount] = useState(0);
   // train data
   const [nextStop, setNextStop] = useState();
   const [trainPoints, setTrainPoints] = useState({});
@@ -183,7 +182,6 @@ function App() {
   React.useEffect(() => {
     const interval = setInterval(async () => {
       const data = await getTrainPointsData();
-      setCount((prevCount) => (prevCount += 1));
       setTrainPoints(data.services);
     }, 1000);
     return () => clearInterval(interval);
