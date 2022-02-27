@@ -111,6 +111,7 @@ function App() {
   }
 
   function renderTrainInfo(info) {
+    console.log(info)
     return (
         info.object && info.object.data && info.object.data.data && info.y && (
           <div
@@ -124,6 +125,7 @@ function App() {
               occupancy={`${'Heavy'}`}
               cardType={cardType.TRAIN}
               closeDialog={hideTooltip}
+              color={`rgb(${info.object.color.join(', ')})`}
             />
           </div>
         )
@@ -182,7 +184,9 @@ function App() {
         'color': getColour(nextStations.filter(stop => stop.tripId === obj.trip_id)[0].trainName)
       }))
       setTrainPoints(new_data);
+      console.log(new_data)
     }, 5000);
+    
     return () => clearInterval(interval);
   });
 
