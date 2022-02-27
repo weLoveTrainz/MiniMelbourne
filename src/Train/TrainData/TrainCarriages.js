@@ -26,7 +26,7 @@ const TrainCarriages = ({ carriageCapacities }) => {
           <div style={{ display: 'flex', flexDirection: 'row' }}>
             <svg
               viewBox="0 0 48 48"
-              xmlns="http://www.w3.org/2000/svg"
+              xmlns="https://www.w3.org/2000/svg"
               style={{ fill: '#C9D5DE' }}
             >
               <circle cx="24" cy="24" r="12" />
