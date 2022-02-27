@@ -15,10 +15,15 @@ import Fuse from 'fuse.js';
 import Typography from '@mui/material/Typography';
 import { Divider } from '@mui/material';
 import getTripData from './data/getTripData';
-import Circle from '../assets/Circle.glb'
+import Circle from '../assets/Circle.glb';
 import { colours } from './data/getPathData';
-import Train from '../assets/AWT-Train.png'
+import Train from '../assets/AWT-Train.png';
 import mapboxgl from 'mapbox-gl'; // This is a dependency of react-map-gl even if you didn't explicitly install it
+import {
+  tripIdToLine,
+  trip_ids,
+  getPathPointByTripId,
+} from './data/getPathPoint';
 // eslint-disable-next-line import/no-webpack-loader-syntax
 mapboxgl.workerClass =
   // eslint-disable-next-line import/no-webpack-loader-syntax
@@ -28,8 +33,7 @@ export const MAPBOX_ACCESS_TOKEN =
   'pk.eyJ1IjoidGhlb3J2b2x0IiwiYSI6ImNreGQ3c3hoZTNkbjUyb3BtMHVnc3ZldGYifQ.r5r7g8XYCkOivBeapa9gSw';
 
 export const iconMapping = {
-  marker: { x: 0, y: 0, width: 200, height: 200
-    , mask: false, anchorY: 200},
+  marker: { x: 0, y: 0, width: 200, height: 200, mask: false, anchorY: 200 },
 };
 
 export const positionOrigin = [144.966964346166, -37.8183051340585];
@@ -42,6 +46,7 @@ const fuse = new Fuse(stations, options);
 
 function App() {
   const [paths, setPaths] = React.useState();
+  const [counter, setCounter] = React.useState(0);
   // TODO: Preprocess these data points into the format
   const [zoom] = useState(15);
   const [hoverInfo, setHoverInfo] = useState({});
@@ -112,21 +117,32 @@ function App() {
 
   function renderTrainInfo(info) {
     return (
-        info.object && info.object.data && info.object.data.data && info.y && (
-          <div
-            className="tooltip interactive"
-            style={{ left: info.x, top: info.y, position: 'absolute' }}
-          >
-            <Dialog
-              title={info.object.data.trainName}
-              nextStation={info.object.data.data.stop ?  info.object.data.data.stop.name : 'Trip Completed'}
-              eta={info.object.data.data ? info.object.data.data.arrival : 'Trip Completed'}
-              occupancy={`${'Heavy'}`}
-              cardType={cardType.TRAIN}
-              closeDialog={hideTooltip}
-            />
-          </div>
-        )
+      info.object &&
+      info.object.data &&
+      info.object.data.data &&
+      info.y && (
+        <div
+          className="tooltip interactive"
+          style={{ left: info.x, top: info.y, position: 'absolute' }}
+        >
+          <Dialog
+            title={info.object.data.trainName}
+            nextStation={
+              info.object.data.data.stop
+                ? info.object.data.data.stop.name
+                : 'Trip Completed'
+            }
+            eta={
+              info.object.data.data
+                ? info.object.data.data.arrival
+                : 'Trip Completed'
+            }
+            occupancy={`${'Heavy'}`}
+            cardType={cardType.TRAIN}
+            closeDialog={hideTooltip}
+          />
+        </div>
+      )
     );
   }
 
@@ -163,7 +179,9 @@ function App() {
     getPaths();
 
     const getNextStationData = async () => {
-      await getTripData().then((response) => {setNextStations(response)});
+      await getTripData().then((response) => {
+        setNextStations(response);
+      });
     };
     getNextStationData();
   }, []);
@@ -173,28 +191,53 @@ function App() {
   React.useEffect(() => {
     const interval = setInterval(async () => {
       const data = await getTrainPointsData();
-      console.log(data)
-      const new_data = []
-      data.services.map((obj) => new_data.push({
-        'coords': obj.coords,
-        'trip_id': obj.trip_id,
-        'start_time': obj.start_time,
-        'data': nextStations.filter(stop => stop.tripId === obj.trip_id)[0],
-        'color': getColour(nextStations.filter(stop => stop.tripId === obj.trip_id)[0].trainName)
-      }))
-      setTrainPoints(new_data);
+      console.log(data);
+      const new_data = [];
+      if (!data) {
+        setCounter((curr) => (curr += 1));
+        const data = trip_ids.map((trip_id) => ({
+          coords: getPathPointByTripId(trip_id, counter),
+          trip_id: trip_id,
+          data: {
+            tripId: trip_id,
+            trainName: `${tripIdToLine[trip_id]}`,
+            data: {
+              stop: null,
+              arrival: null,
+            },
+          },
+          color: [2, 132, 48],
+        }));
+        console.log(data);
+        setTrainPoints(data);
+        console.log('hi');
+      } else {
+        data.services.map((obj) =>
+          new_data.push({
+            coords: obj.coords,
+            trip_id: obj.trip_id,
+            start_time: obj.start_time,
+            data: nextStations.filter((stop) => stop.tripId === obj.trip_id)[0],
+            color: getColour(
+              nextStations.filter((stop) => stop.tripId === obj.trip_id)[0]
+                .trainName
+            ),
+          })
+        );
+        setTrainPoints(new_data);
+      }
     }, 1000);
     return () => clearInterval(interval);
   });
 
-  const getColour = (routeName) => { 
+  const getColour = (routeName) => {
     for (const [name, colour] of Object.entries(colours)) {
-      if (routeName.includes(name)) { 
-        return colour
+      if (routeName.includes(name)) {
+        return colour;
       }
     }
-    return [255, 255, 255]
-  }
+    return [255, 255, 255];
+  };
 
   const layers = [
     new PathLayer({
