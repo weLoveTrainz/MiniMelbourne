@@ -173,9 +173,7 @@ function App() {
   React.useEffect(() => {
     const interval = setInterval(async () => {
       const data = await getTrainPointsData();
-      console.log(data)
       const new_data = []
-      console.log(nextStations)
       data.services.map((obj) => new_data.push({
         'coords': obj.coords,
         'trip_id': obj.trip_id,
@@ -184,7 +182,7 @@ function App() {
         'color': getColour(nextStations.filter(stop => stop.tripId === obj.trip_id)[0].trainName)
       }))
       setTrainPoints(new_data);
-    }, 1000);
+    }, 5000);
     return () => clearInterval(interval);
   });
 
