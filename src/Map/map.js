@@ -9,13 +9,14 @@ import stations from './data/stations.json';
 import getPathData from './data/getPathData';
 import { ScenegraphLayer } from '@deck.gl/mesh-layers';
 import getTrainPointsData from './data/getTrainPointsData';
-import getNextStation from '../Train/TrainData/GetNextStation';
-import getTrainLine from '../Train/TrainData/GetTrainLine';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import Fuse from 'fuse.js';
 import Typography from '@mui/material/Typography';
 import { Divider } from '@mui/material';
+import getTripData from './data/getTripData';
+import Circle from '../assets/Circle.glb'
+import Train from '../assets/AWT-Train.png'
 import mapboxgl from 'mapbox-gl'; // This is a dependency of react-map-gl even if you didn't explicitly install it
 // eslint-disable-next-line import/no-webpack-loader-syntax
 mapboxgl.workerClass =
@@ -26,7 +27,8 @@ export const MAPBOX_ACCESS_TOKEN =
   'pk.eyJ1IjoidGhlb3J2b2x0IiwiYSI6ImNreGQ3c3hoZTNkbjUyb3BtMHVnc3ZldGYifQ.r5r7g8XYCkOivBeapa9gSw';
 
 export const iconMapping = {
-  marker: { x: 0, y: 0, width: 128, height: 128, mask: true },
+  marker: { x: 0, y: 0, width: 200, height: 200
+    , mask: false, anchorY: 200},
 };
 
 export const positionOrigin = [144.966964346166, -37.8183051340585];
@@ -40,13 +42,12 @@ const fuse = new Fuse(stations, options);
 function App() {
   const [paths, setPaths] = React.useState();
   // TODO: Preprocess these data points into the format
-  const [zoom] = useState(13);
+  const [zoom] = useState(15);
   const [hoverInfo, setHoverInfo] = useState({});
   const [trainInfo, setTrainInfo] = useState({});
   // train data
-  const [nextStop, setNextStop] = useState();
   const [trainPoints, setTrainPoints] = useState({});
-  const [trainName, setTrainName] = useState({});
+  const [nextStations, setNextStations] = useState({});
   const [searchQuery, setSearchContents] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
@@ -63,8 +64,8 @@ function App() {
     longitude: 144.966964346166,
     latitude: -37.8183051340585,
     zoom: zoom,
-    pitch: 0,
-    bearing: 0,
+    pitch: 100,
+    bearing: -20,
   });
 
   const inputHandler = (e) => {
@@ -110,24 +111,21 @@ function App() {
 
   function renderTrainInfo(info) {
     return (
-      <>
-        {info.y && nextStop && (
+        info.object && info.object.data && info.object.data.data && info.y && (
           <div
             className="tooltip interactive"
             style={{ left: info.x, top: info.y, position: 'absolute' }}
-            key={trainName.line_name}
           >
             <Dialog
-              title={trainName.line_name}
-              nextStation={nextStop.stop.name}
-              eta={nextStop.arrival}
-              occupancy={`${'Heavy'}%`}
+              title={info.object.data.trainName}
+              nextStation={info.object.data.data.stop ?  info.object.data.data.stop.name : 'Trip Completed'}
+              eta={info.object.data.data ? info.object.data.data.arrival : 'Trip Completed'}
+              occupancy={`${'Heavy'}`}
               cardType={cardType.TRAIN}
               closeDialog={hideTooltip}
             />
           </div>
-        )}
-      </>
+        )
     );
   }
 
@@ -148,7 +146,6 @@ function App() {
   };
 
   const showTrainInfo = (info) => {
-    console.log(info);
     if (info) {
       setTrainInfo(info);
     } else {
@@ -164,22 +161,10 @@ function App() {
     };
     getPaths();
 
-    const nextStation = async (trip_id) => {
-      getNextStation(trip_id).then((res) => {
-        setNextStop(res);
-      });
+    const getNextStationData = async () => {
+      await getTripData().then((response) => {setNextStations(response)});
     };
-
-    const getTripId = async (trip_id) => {
-      getTrainLine(trip_id).then((res) => {
-        setTrainName(res);
-      });
-    };
-    getTripId('379.T2.2-BEL-B-mjp-1.26.R');
-
-    // For each train (id), call getNextStation
-    // nextStation2();
-    nextStation('379.T2.2-BEL-B-mjp-1.26.R');
+    getNextStationData();
   }, []);
 
   // periodic fetch and display
@@ -187,7 +172,15 @@ function App() {
   React.useEffect(() => {
     const interval = setInterval(async () => {
       const data = await getTrainPointsData();
-      setTrainPoints(data.services);
+      console.log(data)
+      const new_data = []
+      data.services.map((obj) => new_data.push({
+        'coords': obj.coords,
+        'trip_id': obj.trip_id,
+        'start_time': obj.start_time,
+        'data': nextStations.filter(stop => stop.tripId === obj.trip_id)[0]
+      }))
+      setTrainPoints(new_data);
     }, 1000);
     return () => clearInterval(interval);
   });
@@ -197,7 +190,7 @@ function App() {
       data: paths,
       getPath: (f) => f.path,
       getColor: (d) => d.color,
-      getWidth: 10,
+      getWidth: 20,
       widthMinPixels: 1,
       pickable: true,
     }),
@@ -205,8 +198,7 @@ function App() {
       id: 'icon-lnglat',
       pickable: true,
       data: newPoints,
-      iconAtlas:
-        'https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/icon-atlas.png',
+      iconAtlas: Train,
       iconMapping,
       sizeScale: 20,
       getPosition: (d) => {
@@ -218,8 +210,7 @@ function App() {
         return 'marker';
       },
       getSize: (d) => {
-        // return (d.RACKS > 2 ? 2 : 1)
-        return 1;
+        return 2;
       },
       opacity: 0.8,
       onClick: expandTooltip,
@@ -228,14 +219,16 @@ function App() {
       id: 'scenegraph-layer',
       data: trainPoints ?? [],
       pickable: true,
-      scenegraph:
-        'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/BoxAnimated/glTF-Binary/BoxAnimated.glb',
+      scenegraph: Circle,
       getPosition: (d) => d.coords,
-      getOrientation: (d) => [0, Math.random() * 180, 90],
+      getOrientation: (d) => [0, 180, 90],
       _animations: {
         '*': { speed: 5 },
       },
-      sizeScale: 250,
+      getSize: (d) => {
+        return 8;
+      },
+      sizeScale: 40,
       _lighting: 'pbr',
       onClick: showTrainInfo,
     }),
@@ -245,7 +238,6 @@ function App() {
     <DeckGL
       viewState={viewState}
       onViewStateChange={(viewState) => {
-        console.log(viewState);
         // TODO: extract this to a handler
         setViewState(viewState.viewState);
         hideTooltip();
