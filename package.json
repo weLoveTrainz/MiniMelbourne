@@ -2,7 +2,6 @@
   "name": "mini-melbourne",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://weLoveTrainz.github.io/MiniMelbourne",
   "dependencies": {
     "@babel/core": "^7.17.5",
     "@babel/preset-env": "^7.16.11",
