@@ -1,15 +1,13 @@
 import * as React from 'react';
 import { useState } from 'react';
-import Map, { NavigationControl } from 'react-map-gl';
+import Map from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import Dialog, { cardType } from '../Train/TrainData/Dialog';
 import DeckGL from '@deck.gl/react';
 import { IconLayer, PathLayer } from '@deck.gl/layers';
 import stations from './data/stations.json';
 import getPathData from './data/getPathData';
-import samplePathData from './data/100.T2.2-GLW-B-mjp-1.2.H.json';
 import { ScenegraphLayer } from '@deck.gl/mesh-layers';
-import Carriage from '../Train/TrainData/Carriage';
 import getTrainPointsData from './data/getTrainPointsData';
 import getNextStation from '../Train/TrainData/GetNextStation';
 import getTrainLine from '../Train/TrainData/GetTrainLine';
@@ -37,7 +35,7 @@ const fuse = new Fuse(stations, options);
 function App() {
   const [paths, setPaths] = React.useState();
   // TODO: Preprocess these data points into the format
-  const [zoom, setZoom] = useState(13);
+  const [zoom] = useState(13);
   const [hoverInfo, setHoverInfo] = useState({});
   const [trainInfo, setTrainInfo] = useState({});
   const [count, setCount] = useState(0);
@@ -113,6 +111,7 @@ function App() {
           <div
             className="tooltip interactive"
             style={{ left: info.x, top: info.y, position: 'absolute' }}
+            key={trainName.line_name}
           >
             <Dialog
               title={trainName.line_name}
@@ -127,14 +126,6 @@ function App() {
       </>
     );
   }
-
-  const [trainPoint, setTrainPoint] = useState([
-    {
-      Name: 'yamum',
-      ID: 'train_id',
-      COORDINATES: [144.966964346166, -37.8183051340585],
-    },
-  ]);
 
   const newPoints = stations.map((station) => {
     return {
@@ -183,13 +174,6 @@ function App() {
     getTripId('379.T2.2-BEL-B-mjp-1.26.R');
 
     // For each train (id), call getNextStation
-    const nextStation2 = async () => {
-      const liveData = getTrainPointsData();
-      for (let obj in liveData) {
-        console.log(obj.services.trip_id);
-        nextStation(obj.services.trip_id);
-      }
-    };
     // nextStation2();
     nextStation('379.T2.2-BEL-B-mjp-1.26.R');
   }, []);
@@ -200,12 +184,6 @@ function App() {
     const interval = setInterval(async () => {
       const data = await getTrainPointsData();
       setCount((prevCount) => (prevCount += 1));
-      setTrainPoint([
-        {
-          ID: 'train_id',
-          COORDINATES: samplePathData.shape_file[count],
-        },
-      ]);
       setTrainPoints(data.services);
     }, 1000);
     return () => clearInterval(interval);
