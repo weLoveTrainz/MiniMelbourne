@@ -90,7 +90,7 @@ const Dialog = (props) => {
         <CardMedia
           component="img"
           sx={{ width: 56, margin: 2, alignSelf: 'start' }}
-          image={props.type === cardType.TRAIN ? trainIcon : trainStationIcon}
+          image={props.cardType === cardType.TRAIN ? trainIcon : trainStationIcon}
           alt="Live from space album cover"
         />
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
