@@ -16,7 +16,7 @@ const lines = {
   Sandringham: '1952.T5.2-SDM-E-mjp-1.2.R',
 };
 
-const colours = {
+export const colours = {
   Lilydale: [21, 44, 107],
   Belgrave: [21, 44, 107],
   'Glen Waverley': [21, 44, 107],

@@ -16,6 +16,7 @@ import Typography from '@mui/material/Typography';
 import { Divider } from '@mui/material';
 import getTripData from './data/getTripData';
 import Circle from '../assets/Circle.glb'
+import { colours } from './data/getPathData';
 import Train from '../assets/AWT-Train.png'
 import mapboxgl from 'mapbox-gl'; // This is a dependency of react-map-gl even if you didn't explicitly install it
 // eslint-disable-next-line import/no-webpack-loader-syntax
@@ -178,12 +179,22 @@ function App() {
         'coords': obj.coords,
         'trip_id': obj.trip_id,
         'start_time': obj.start_time,
-        'data': nextStations.filter(stop => stop.tripId === obj.trip_id)[0]
+        'data': nextStations.filter(stop => stop.tripId === obj.trip_id)[0],
+        'color': getColour(nextStations.filter(stop => stop.tripId === obj.trip_id)[0].trainName)
       }))
       setTrainPoints(new_data);
     }, 1000);
     return () => clearInterval(interval);
   });
+
+  const getColour = (routeName) => { 
+    for (const [name, colour] of Object.entries(colours)) {
+      if (routeName.includes(name)) { 
+        return colour
+      }
+    }
+    return [255, 255, 255]
+  }
 
   const layers = [
     new PathLayer({
@@ -206,7 +217,6 @@ function App() {
       },
       getColor: (d) => [64, 64, 72],
       getIcon: (d) => {
-        // return  (d.PLACEMENT === 'SW' ? 'marker' : 'marker-warning')
         return 'marker';
       },
       getSize: (d) => {
@@ -230,6 +240,7 @@ function App() {
       },
       sizeScale: 40,
       _lighting: 'pbr',
+      getColor: (d) => d.color,
       onClick: showTrainInfo,
     }),
   ];
