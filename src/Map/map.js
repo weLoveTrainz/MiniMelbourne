@@ -116,6 +116,7 @@ function App() {
   }
 
   function renderTrainInfo(info) {
+    console.log(info);
     return (
       info.object &&
       info.object.data &&
@@ -126,7 +127,7 @@ function App() {
           style={{ left: info.x, top: info.y, position: 'absolute' }}
         >
           <Dialog
-            title={info.object.data.trainName}
+            title={info.object.data && info.object.data.trainName}
             nextStation={
               info.object.data.data.stop
                 ? info.object.data.data.stop.name
@@ -140,6 +141,7 @@ function App() {
             occupancy={`${'Heavy'}`}
             cardType={cardType.TRAIN}
             closeDialog={hideTooltip}
+            color={`rgb(${info.object.color.join(', ')})`}
           />
         </div>
       )
@@ -192,7 +194,6 @@ function App() {
     const interval = setInterval(async () => {
       const data = await getTrainPointsData();
       console.log(data);
-      const new_data = [];
       if (!data) {
         setCounter((curr) => (curr += 1));
         const data = trip_ids.map((trip_id) => ({
@@ -212,6 +213,7 @@ function App() {
         setTrainPoints(data);
         console.log('hi');
       } else {
+        const new_data = [];
         data.services.map((obj) =>
           new_data.push({
             coords: obj.coords,
@@ -225,6 +227,7 @@ function App() {
           })
         );
         setTrainPoints(new_data);
+        console.log(new_data);
       }
     }, 1000);
     return () => clearInterval(interval);

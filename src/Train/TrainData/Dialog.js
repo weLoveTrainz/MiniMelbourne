@@ -29,7 +29,7 @@ const useStyles = makeStyles({
     background: '#FFFFFF',
     /* Stroke/light */
 
-    border: '1px solid #DEE2E6',
+    border: props => `5px solid ${props.color}`,
     /* Shadow / Small */
 
     boxShadow:
@@ -58,7 +58,8 @@ const useStyles = makeStyles({
 const testCapacities = [10, 20, 81, 60, 20, 10];
 
 const Dialog = (props) => {
-  const classes = useStyles();
+  const classes = useStyles(props);
+  console.log(props.color)
   return (
     <Card
       className={classes.root}
@@ -71,9 +72,6 @@ const Dialog = (props) => {
       <div style={{ position: 'absolute', top: 4, right: 4 }}>
         <IconButton
           onClick={() => {
-            console.log(props);
-            console.log('hi');
-            console.log(props.closeDialog);
             props.closeDialog();
           }}
         >
@@ -90,7 +88,7 @@ const Dialog = (props) => {
         <CardMedia
           component="img"
           sx={{ width: 56, margin: 2, alignSelf: 'start' }}
-          image={props.type === cardType.TRAIN ? trainIcon : trainStationIcon}
+          image={props.cardType === cardType.TRAIN ? trainIcon : trainStationIcon}
           alt="Live from space album cover"
         />
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>

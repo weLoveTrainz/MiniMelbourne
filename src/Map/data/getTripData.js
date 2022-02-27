@@ -11,7 +11,6 @@ async function getData() {
 export default async function getTripData() {
   // get the trip ids from the path data
   let liveData = await getData();
-  // console.log(liveData)
   const tripIds = [];
   const returnData = [];
 
