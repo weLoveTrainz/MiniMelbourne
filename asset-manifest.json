@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/MiniMelbourne/static/css/main.cf9e2587.css",
-    "main.js": "/MiniMelbourne/static/js/main.98429fbd.js",
-    "static/js/483.86bf3615.chunk.js": "/MiniMelbourne/static/js/483.86bf3615.chunk.js",
-    "index.html": "/MiniMelbourne/index.html",
-    "main.cf9e2587.css.map": "/MiniMelbourne/static/css/main.cf9e2587.css.map",
-    "main.98429fbd.js.map": "/MiniMelbourne/static/js/main.98429fbd.js.map",
-    "483.86bf3615.chunk.js.map": "/MiniMelbourne/static/js/483.86bf3615.chunk.js.map"
+    "main.css": "/static/css/main.cf9e2587.css",
+    "main.js": "/static/js/main.c1e54373.js",
+    "static/js/mapbox-gl-csp-worker.a7696ec4.worker.js": "/static/js/mapbox-gl-csp-worker.a7696ec4.worker.js",
+    "static/media/Circle.glb": "/static/media/Circle.7d4c6ca7195483e3fe9d.glb",
+    "index.html": "/index.html",
+    "main.cf9e2587.css.map": "/static/css/main.cf9e2587.css.map",
+    "main.c1e54373.js.map": "/static/js/main.c1e54373.js.map"
   },
   "entrypoints": [
     "static/css/main.cf9e2587.css",
-    "static/js/main.98429fbd.js"
+    "static/js/main.c1e54373.js"
   ]
 }
