@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/MiniMelbourne/static/css/main.cf9e2587.css",
-    "main.js": "/MiniMelbourne/static/js/main.7d2d9062.js",
-    "static/js/mapbox-gl-csp-worker.66e6cd48.worker.js": "/MiniMelbourne/static/js/mapbox-gl-csp-worker.66e6cd48.worker.js",
+    "main.js": "/MiniMelbourne/static/js/main.2dbca37f.js",
+    "static/js/mapbox-gl-csp-worker.97334c55.worker.js": "/MiniMelbourne/static/js/mapbox-gl-csp-worker.97334c55.worker.js",
     "static/media/Circle.glb": "/MiniMelbourne/static/media/Circle.7d4c6ca7195483e3fe9d.glb",
     "index.html": "/MiniMelbourne/index.html",
     "main.cf9e2587.css.map": "/MiniMelbourne/static/css/main.cf9e2587.css.map",
-    "main.7d2d9062.js.map": "/MiniMelbourne/static/js/main.7d2d9062.js.map"
+    "main.2dbca37f.js.map": "/MiniMelbourne/static/js/main.2dbca37f.js.map"
   },
   "entrypoints": [
     "static/css/main.cf9e2587.css",
-    "static/js/main.7d2d9062.js"
+    "static/js/main.2dbca37f.js"
   ]
 }
