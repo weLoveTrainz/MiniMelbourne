@@ -75,7 +75,7 @@ function App() {
     pitch: 100,
     bearing: -20,
   });
-  var ws = null; // Define websockets
+  //var ws = null; // Define websockets
 
   const inputHandler = (e) => {
     setSearchContents(e.target.value);

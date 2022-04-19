@@ -1,5 +1,3 @@
-import getTrainLine from '../../Train/TrainData/GetTrainLine';
-
 async function getData() {
   const data = await fetch(
     `${process.env.REACT_APP_BACKEND_API_URL}/realtime`

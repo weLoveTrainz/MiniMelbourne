@@ -33,23 +33,7 @@ const line_file = {
   Sandringham:Sandringham,
 };
 
-const lines = {
-  Lilydale: '1033.T5.2-LIL-C-mjp-1.35.R',
-  Belgrave: '1.T2.2-BEL-E-mjp-1.20.R',//
-  'Glen Waverley': '1145.T0.2-GLW-G-mjp-1.7.R', //
-  Alamein: '1374.T0.2-ALM-H-mjp-1.2.H', //
-  Pakenam: '1.T5.2-PKM-D-mjp-1.4.H', //
-  Cranbourne: '4821.T5.2-CRB-F-mjp-1.2.H',
-  Mernda: '6256.T5.2-MER-C-mjp-1.9.R',
-  Hurstbridge: '14.T6.2-HBG-E-mjp-1.20.R', //
-  Sunbury: '85.UT.2-SYM-G-mjp-1.17.R',
-  Craigieburn: '140.UR.2-B31-F-mjp-1.6.H', //
-  Upfield: '3989.T2.2-UFD-G-mjp-1.2.H',
-  Frankston: '1973.T5.2-FKN-F-mjp-1.12.R',
-  Werribee: '2.UT.2-WBE-L-mjp-1.7.H',
-  Williamstown: '3242.UQ.2-WMN-K-mjp-1.1.H',
-  Sandringham: '1952.T5.2-SDM-E-mjp-1.2.R',
-};
+
 
 export const colours = {
   Lilydale: [21, 44, 107],

@@ -40,7 +40,7 @@ export const tripToLine = (trip_id) => {
   // Given tripid-> line + direction, direction may be wrong
   var splitted = trip_id.split("."); 
   var line = splitted[2].split("-")[1];
-  var dir = splitted.at(-1)=="R" ? "(To City)" : "(From City)";
+  var dir = splitted.at(-1)==="R" ? "(To City)" : "(From City)";
 
 
   switch (line) { // Check by
@@ -74,6 +74,8 @@ export const tripToLine = (trip_id) => {
       return `Williamstown ${dir}`;
     case "SDM":
       return `Sandringham ${dir}`;
+    default:
+      return `Unknown`;
   }
 }
 
@@ -99,10 +101,8 @@ export const trip_ids = [
 
 export const getPathPointByTripId = (trip_id, counter) => {
   // const arrayLength = 100;
-  console.log(counter);
   const arrayLength = getPathFromTripId(trip_id)['shape_file'].length;
   const currTime = get24HourTimeInSeconds();
-  console.log(currTime);
   // console.log(currTime, 'currtime');
   // console.log(arrayLength, 'arraylength');
 
@@ -113,7 +113,6 @@ export const getPathPointByTripId = (trip_id, counter) => {
 
   // const index = Math.floor();
   const coords = getPathFromTripId(trip_id)['shape_file'][index];
-  console.log({ trip_id: trip_id, index });
   return coords;
 };
 
