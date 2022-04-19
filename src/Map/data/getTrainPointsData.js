@@ -9,3 +9,4 @@ export default async function getPathData() {
     return null;
   }
 }
+ // GETS REALTIME DATA

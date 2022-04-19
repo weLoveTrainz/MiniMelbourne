@@ -61,7 +61,6 @@ const testCapacities = [10, 20, 81, 60, 20, 10];
 
 const Dialog = (props) => {
   const classes = useStyles(props);
-  console.log(props.color)
   return (
     <Card
       className={classes.root}
@@ -116,8 +115,7 @@ const Dialog = (props) => {
                 </Typography>
               </div>
             )}
-            {console.log(props.nextStation)}
-            {console.log(props.type)}
+            
             {props.cardType === cardType.TRAIN && (
               <div>
                 <Typography
