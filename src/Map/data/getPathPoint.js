@@ -36,6 +36,47 @@ export const tripIdToLine = Object.fromEntries(
   Object.entries(lines).map((a) => a.reverse())
 );
 
+export const tripToLine = (trip_id) => {
+  // Given tripid-> line + direction, direction may be wrong
+  var splitted = trip_id.split("."); 
+  var line = splitted[2].split("-")[1];
+  var dir = splitted.at(-1)=="R" ? "(To City)" : "(From City)";
+
+
+  switch (line) { // Check by
+    case "LIL":
+      return `Lilydale ${dir}`;
+    case "BEL":
+      return `Belgrave ${dir}`;
+    case "GLW":
+      return `Glen Waverley ${dir}`;
+    case "ALM":
+      return `Alamein ${dir}`;
+    case "PKM":
+      return `Pakenham ${dir}`;
+    case "CRB":
+      return `Cranbourne ${dir}`;
+    case "MER":
+      return `Mernda ${dir}`;
+    case "HBG":
+      return `Hurstbridge ${dir}`;
+    case "SYM":
+      return `SYM ${dir}`;
+    case "B31":
+      return `Craigieburn ${dir}`;
+    case "UFD":
+      return `Upfield ${dir}`;
+    case "FKN":
+      return `Frankston ${dir}`;
+    case "WBE":
+      return `Werribee ${dir}`;
+    case "WMN":
+      return `Williamstown ${dir}`;
+    case "SDM":
+      return `Sandringham ${dir}`;
+  }
+}
+
 export const trip_ids = [
   '1033.T5.2-LIL-C-mjp-1.35.R',
   '232.T2.2-BEL-B-mjp-1.25.R',

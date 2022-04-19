@@ -21,6 +21,7 @@ import Train from '../assets/AWT-Train.png';
 import mapboxgl from 'mapbox-gl'; // This is a dependency of react-map-gl even if you didn't explicitly install it
 import {
   tripIdToLine,
+  tripToLine,
   trip_ids,
   getPathPointByTripId,
 } from './data/getPathPoint';
@@ -45,6 +46,7 @@ const options = {
 const fuse = new Fuse(stations, options);
 
 function App() {
+
   const [paths, setPaths] = React.useState();
   const [counter, setCounter] = React.useState(0);
   // TODO: Preprocess these data points into the format
@@ -73,6 +75,7 @@ function App() {
     pitch: 100,
     bearing: -20,
   });
+  var ws = null; // Define websockets
 
   const inputHandler = (e) => {
     setSearchContents(e.target.value);
@@ -114,9 +117,39 @@ function App() {
       );
     }
   }
+  const occupancyInfo = (occ_num) => {
+    /* Gets Occupancy Information
+    */
+    switch (occ_num) {
+      case 0:
+        return "Empty";
+      case 1:
+        return "Many seats available";
+      case 2:
+        return "Few seats available";
+      case 3:
+        return "Standing room only";
+      case 4:
+        return "Crushed - Standing room only";
+      case 5:
+        return "Full";
+      case 6:
+        return "Not accepting passengers";
+      case 7:
+        return "No data";
+      case 8:
+        return "Not boardable";
+      case null:
+        return "No data";
+    }
+  }
 
   function renderTrainInfo(info) {
-    console.log(info);
+    /*
+    Train card
+
+
+    */
     return (
       info.object &&
       info.object.data &&
@@ -130,7 +163,7 @@ function App() {
             title={info.object.data && info.object.data.trainName}
             nextStation={
               info.object.data.data.stop
-                ? info.object.data.data.stop.name
+                ? info.object.data.data.stop
                 : 'Trip Completed'
             }
             eta={
@@ -138,9 +171,11 @@ function App() {
                 ? info.object.data.data.arrival
                 : 'Trip Completed'
             }
-            occupancy={`${'Heavy'}`}
+            occupancy={`${occupancyInfo(info.object.data.data.occupancy)}`}
             cardType={cardType.TRAIN}
             closeDialog={hideTooltip}
+            trip_id={info.object.trip_id}
+            vehicle_id={info.object.vehicle_id}
             color={`rgb(${info.object.color.join(', ')})`}
           />
         </div>
@@ -180,11 +215,14 @@ function App() {
     };
     getPaths();
 
+
     const getNextStationData = async () => {
       await getTripData().then((response) => {
         setNextStations(response);
+
       });
     };
+
     getNextStationData();
   }, []);
 
@@ -192,8 +230,10 @@ function App() {
   // 15 seconds lurp
   React.useEffect(() => {
     const interval = setInterval(async () => {
+      //ws = new WebSocket("ws://")
       const data = await getTrainPointsData();
-      console.log(data);
+
+      // NOT TO BE USED
       if (!data) {
         setCounter((curr) => (curr += 1));
         const data = trip_ids.map((trip_id) => ({
@@ -209,25 +249,29 @@ function App() {
           },
           color: [2, 132, 48],
         }));
-        console.log(data);
         setTrainPoints(data);
-        console.log('hi');
       } else {
+        // LOOK HERE
+
         const new_data = [];
         data.services.map((obj) =>
           new_data.push({
-            coords: obj.coords,
+            coords: [obj.longitude, obj.latitude],
             trip_id: obj.trip_id,
             start_time: obj.start_time,
-            data: nextStations.filter((stop) => stop.tripId === obj.trip_id)[0],
-            color: getColour(
-              nextStations.filter((stop) => stop.tripId === obj.trip_id)[0]
-                .trainName
-            ),
+            data: {
+              tripId: obj.trip_id,
+              trainName: `${tripToLine(obj.trip_id)}`,
+              data: {
+                stop: obj.next_stop,
+                arrival: obj.arrival,
+                occupancy: obj.occupancy
+              },
+            }, //nextStations.filter((stop) => stop.tripId === obj.trip_id)[0], // This may be undefined
+            color: getColour(obj.trip_id),
           })
         );
         setTrainPoints(new_data);
-        console.log(new_data);
       }
     }, 1000);
     return () => clearInterval(interval);
@@ -239,7 +283,6 @@ function App() {
         return colour;
       }
     }
-    return [255, 255, 255];
   };
 
   const layers = [
@@ -301,7 +344,7 @@ function App() {
       }}
       controller={true}
       layers={layers}
-      onClick={() => {}}
+      onClick={() => { }}
       pickingRadius={20}
     >
       <Map
@@ -333,7 +376,7 @@ function App() {
           }}
         >
           <IconButton
-            onClick={() => {}}
+            onClick={() => { }}
             style={{
               border: 'solid 2px white',
               backgroundColor: 'white',

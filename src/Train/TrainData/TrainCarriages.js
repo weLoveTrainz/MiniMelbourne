@@ -1,4 +1,9 @@
 import Carriage from './Carriage';
+/*
+Carriage capacity card, to be removed
+
+
+*/
 
 const TrainCarriages = ({ carriageCapacities }) => {
   return (

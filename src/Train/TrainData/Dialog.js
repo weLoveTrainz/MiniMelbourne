@@ -18,6 +18,7 @@ export const cardType = {
 
 const useStyles = makeStyles({
   root: {
+    fontFamily: 'Oswald',
     position: 'absolute',
     minWidth: '380px',
     minHeight: '160px',
@@ -36,7 +37,7 @@ const useStyles = makeStyles({
       '0px 0px 2px rgba(0, 0, 0, 0.12), 0px 20px 20px rgba(0, 0, 0, 0.08)',
   },
   title: {
-    fontFamily: 'Helvetica Neue',
+    fontFamily: 'Oswald',
     fontStyle: 'normal',
     fontWeight: '600',
     fontSize: '20px',
@@ -51,6 +52,7 @@ const useStyles = makeStyles({
     flexGrow: '0',
   },
   subtitle: {
+    fontFamily: 'Oswald',
     fontWeight: '400',
   },
 });
@@ -121,6 +123,7 @@ const Dialog = (props) => {
                 <Typography
                   variant="body2"
                   color="text.secondary"
+                  fontFamily='Oswald'
                   sx={{ lineHeight: 1.5 }}
                 >
                   <span className={classes.subtitle}>Next Station:</span>{' '}
@@ -129,12 +132,14 @@ const Dialog = (props) => {
                 <Typography
                   variant="body2"
                   color="text.secondary"
+                  fontFamily='Oswald'
                   sx={{ lineHeight: 1.5 }}
                 >
                   <span className={classes.subtitle}>ETA:</span> {props.eta}
                 </Typography>
                 <Typography
                   variant="body2"
+                  fontFamily='Oswald'
                   color="text.secondary"
                   sx={{ lineHeight: 1.5 }}
                 >
@@ -143,6 +148,25 @@ const Dialog = (props) => {
                   </span>{' '}
                   {props.occupancy}
                 </Typography>
+
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  fontFamily='Oswald'
+                  sx={{ lineHeight: 1.5 }}
+                >
+                  <span className={classes.subtitle}>Trip ID:</span> {props.trip_id}
+                </Typography>
+
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  fontFamily='Oswald'
+                  sx={{ lineHeight: 1.5 }}
+                >
+                  <span className={classes.subtitle}>Vehicle ID:</span> {props.vehicle_id}
+                </Typography>
+
                   {/* TODO: Make this conditional depending on train type */}
                  <TrainCarriages carriageCapacities={testCapacities} />
               </div>
